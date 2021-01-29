@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ApiComponent } from './api/api.component';
    
     ProfileComponent,
     ApiComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
