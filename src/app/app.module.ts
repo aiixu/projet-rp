@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
+import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ApiComponent } from './api/api.component';
    
     ProfileComponent,
     ApiComponent,
+    QuiSommesNousComponent,
   ],
   imports: [
     BrowserModule,

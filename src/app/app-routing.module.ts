@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import {ContactComponent } from './contact/contact.component';
+import {QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 
 import { ApiComponent } from './api/api.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
+  },
+  {
+    path: "QuiSommesNous",
+    component: QuiSommesNousComponent
   },
   {
     path: "profile",
@@ -29,6 +34,7 @@ const routes: Routes = [
       }
     ]
   },
+  
   {
     path: "",
     redirectTo: "/home",
