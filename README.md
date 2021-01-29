@@ -163,6 +163,12 @@
 
 ## Comment utiliser Angular
 
+0. Installation
+
+L'`Angular CLI` est l'invité de commande Angular, pour créer des projets, les compiler, ajouter des components etc.  
+Pour l'installer, il faut avoir `NPM`, puis faire `npm install -g @angular/cli`.  
+Vous pouvez ensuite utiliser les commandes relatives à angular.
+
 1. Compilation
 
 Pour compiler le projet Angular, il faut ouvrir un terminal dans le dossier racine de l'application (./projet-rp/) et écrire `ng serve`. Ensuite, allez sur l'URL donnée par Angular dans la console dans et vous aurez accès à l'application.  
