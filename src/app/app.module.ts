@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { DocsComponent } from './docs/docs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
+import { ApiComponent } from './api/api.component';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,9 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     ProfileComponent,
     ContactComponent,
-    DocsComponent,
-    ProfileComponent
+   
+    ProfileComponent,
+    ApiComponent,
   ],
   imports: [
     BrowserModule,
