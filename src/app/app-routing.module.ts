@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { DocsComponent } from './docs/docs.component';
+import { ApiComponent } from './api/api.component';
 
 const routes: Routes = [
   {
@@ -15,8 +15,8 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: "docs",
-    component: DocsComponent,
+    path: "api",
+    component: ApiComponent,
     children: [
       {
         path: "home",
