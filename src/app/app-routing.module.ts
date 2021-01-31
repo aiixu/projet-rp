@@ -3,7 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import {ContactComponent } from './contact/contact.component';
+import {RegistrationComponent } from './registration/registration.component';
+
 import { ApiComponent } from './api/api.component';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {
@@ -15,8 +19,18 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
+    path: "contact",
+    component: ContactComponent
+  },
+  {
+    path: "registration",
+    component: RegistrationComponent
+  },
+  {
     path: "api",
     component: ApiComponent,
+
+
     children: [
       {
         path: "home",
