@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUsersRequest, GetUsersRequestModel } from 'src/apiwrapper/rpprojectapi';
-
-import CreateUserJson from 'src/assets/json/api/users/createUser.json';
-import DeleteUserJson from 'src/assets/json/api/users/deleteUser.json';
+import axios from 'axios';
 
 @Component({
   selector: 'app-api',
@@ -11,23 +8,62 @@ import DeleteUserJson from 'src/assets/json/api/users/deleteUser.json';
 })
 
 export class ApiComponent implements OnInit {
-  tabSpaces: number = 2;
+  tabSpaces: number = 4;
 
   items: Array<any> = [
-    CreateUserJson,
-    DeleteUserJson
+    {
+      tab: 0,
+      title: "Créer",
+      description: "Requête permettant de créer un utilisateur dans la base de données",
+      method: "POST",
+      route: "/api/users",
+      request: {
+        username: {
+          type: {
+            test: {
+              type: "string"
+            }
+          },
+          description: "Nom d'utilisateur"
+        },
+        email: {
+          type: "string",
+          description: "Adresse mail"
+        },
+        password_hash: {
+          type: "string",
+          description: "Hash du mot de passe"
+        },
+        is_public: {
+          type: "boolean",
+          description: "Défini si le compte est public ou privé"
+        },
+        profilePicture: {
+          type: "string",
+          optional: true,
+          description: "URL de la photo de profil"
+        },
+        first_name: {
+          type: "string",
+          optional: true,
+          description: "Prénom"
+        },
+        last_name: {
+          type: "string",
+          optional: true,
+          description: "Nom"
+        },
+      },
+      response: {
+        id: "number"
+      }
+    }
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
-    const request: GetUsersRequest = new GetUsersRequest();
-    request.get(new GetUsersRequestModel())
-      .then(res =>
-        {
-          console.log(res);
-        })
-      .catch(console.error);
+    
   }
 
   formatRaw(obj: NonNullable<any>, indentLevel: number = 1, isSubObject: boolean = false, isLastObject: boolean = true): string {
@@ -96,40 +132,10 @@ export class ApiComponent implements OnInit {
     return result;
   }
 
-  formatAxios(obj: NonNullable<any>, indentLevel: number = 1, isSubObject: boolean = false, isLastObject: boolean = true): string {
-    const tab: string = " ".repeat(this.tabSpaces * indentLevel);
-    const cbTab: string = " ".repeat(this.tabSpaces * (indentLevel - 1));
-
-    let result: string = !isSubObject ? "const request: any = {\n" : cbTab + "{\n";
-    
-    const lastKey = Object.keys(obj)[Object.keys(obj).length - 1];
-
-    for(const key in obj)
-    {
-       const value = obj[key];
-      const valueType = value.type;
-      const isLastKey = key == lastKey;
-
-      result += `${tab}${value.optional ? `[${key}]` : key}: `;
-
-      if (typeof valueType == "object" && valueType !== null)
-      {
-       result += this.formatRaw(valueType, indentLevel + 1, true, isLastKey) + "\n";
-      }
-      else
-      {
-        if(typeof(value.example) == typeof("")) value.example = `"${value.example}"`;
-        result += value.example + `${isLastKey ? "" : ","}\n`;
-      }
-    }
-
-    result += `${cbTab}}${isLastObject ? "" : ","}`;
-
-    if(isLastObject)
-    {
-      result += `\n\naxios.${obj.method}(`;
-    }
-    
-    return result;
+  formatAxios(object: NonNullable<any>): string
+  {
+    return "a";
   }
+
+  
 }

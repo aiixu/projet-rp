@@ -1,0 +1,13 @@
+{
+    "id": "users_delete",
+    "title": "Supprimer un utilisateur",
+    "description": "Requête permettant de supprimer un utilisateur dans la base de données",
+    "method": "delete",
+    "route": "/api/users/{id}",
+    "response": {
+        "success": {
+            "type": "boolean",
+            "description": "Défini si l'utilisateur à bien été supprimé, ou non"
+        }
+    }
+}
