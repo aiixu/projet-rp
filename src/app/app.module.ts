@@ -12,6 +12,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
+import { ApitestComponent } from './apitest/apitest.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MajorMinorComponent } from './major-minor/major-minor.component';
     CreateRPComponent,
     WhoAreWeComponent,
     MajorMinorComponent,
+    ApitestComponent,
   ],
   imports: [
     BrowserModule,

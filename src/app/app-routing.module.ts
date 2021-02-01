@@ -12,9 +12,7 @@ import {MajorMinorComponent} from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
 
 import { ApiComponent } from './api/api.component';
-
-
-
+import { ApitestComponent } from './apitest/apitest.component';
 
 const routes: Routes = [
   {
@@ -52,6 +50,10 @@ const routes: Routes = [
   {
     path: "faq",
     component: FaqComponent
+  },
+  {
+    path: "apitest",
+    component: ApitestComponent
   },
   {
     path: "api",
