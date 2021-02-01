@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ApiComponent } from './api/api.component';
-
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
-import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
-
-import { FaqComponent } from './faq/faq.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { CreateRPComponent } from './create-rp/create-rp.component';
+import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import { FaqComponent } from './faq/faq.component';
+
+import { ApiComponent } from './api/api.component';
+
+
+
 
 const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
-  },
-  {
-    path: "QuiSommesNous",
-    component: QuiSommesNousComponent
   },
   {
     path: "profile",
@@ -31,6 +31,18 @@ const routes: Routes = [
   {
     path: "registration",
     component: RegistrationComponent
+  },
+  {
+    path: "connexion",
+    component: ConnexionComponent
+  },
+  {
+    path: "create-rp",
+    component: CreateRPComponent
+  },
+  {
+    path: "who-are-we",
+    component: WhoAreWeComponent
   },
   {
     path: "faq",
