@@ -17,17 +17,18 @@
             $user->id = $request->id;
 
             $response = new DeleteUserResponseModel();
-            
+            $response->success = $user->delete();
+
             if($user->delete())
             {
                 $response->code = 200; // Ok
-                $response->content = array("message" => "User was deleted.");
+                $response->content = array("message" => "User was deleted.", "success" => true);
             }
             // if unable to delete the user
             else
             {
                 $response->code = 503; // Service unavailable
-                $response->content = array("message" => "Unable to delete user.");
+                $response->content = array("message" => "Unable to delete user.", "success" => false);
             }
             
             return $response->emit();
@@ -42,5 +43,7 @@
 
     // Response
     class DeleteUserResponseModel extends ResponseModel
-    { }
+    { 
+        public $success;
+    }
 ?>

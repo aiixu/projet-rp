@@ -1,0 +1,18 @@
+<table class="table" *ngIf="response != undefined">
+    <thead>
+        <th>Nom d'utilisateur</th>
+        <th>Profil publique</th>
+        <th>URL photo de profil</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of response.users">
+            <td>{{ user.username }}</td>
+            <td>{{ user.isPublic }}</td>
+            <td>{{ user.profilePicture }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+        </tr>
+    </tbody>
+</table>

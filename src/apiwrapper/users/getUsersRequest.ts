@@ -1,10 +1,11 @@
 import { Expose, Type, plainToClass } from 'class-transformer';
 import axios from "axios";
+import { environment } from 'src/environments/environment';
 
 export class GetUsersRequest
 {
     public async get(request: NonNullable<GetUsersRequestModel>): Promise<GetUsersResponseModel> {        
-        const response: any = await axios.get(`http://localhost/api/users?p=${request.page}&q=${request.query}`);       
+        const response: any = await axios.get(`${environment.dburl}api/users?p=${request.page}&q=${request.query}`);       
         return plainToClass(GetUsersResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }
