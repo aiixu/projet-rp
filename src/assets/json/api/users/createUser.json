@@ -1,0 +1,53 @@
+{
+    "id": "users_create",
+    "title": "Créer un utilisateur",
+    "description": "Requête permettant de créer un utilisateur dans la base de données",
+    "method": "post",
+    "route": "/api/users",
+    "request": {
+        "username": {
+            "type": "string",
+            "example": "aiixu",
+            "description": "Nom d'utilisateur"
+        },
+        "email": {
+            "type": "string",
+            "example": "stevancorre@gmail.com",
+            "description": "Adresse mail"
+        },
+        "password_hash": {
+            "type": "string",
+            "example": "03e3b31add6b3903ff3e",
+            "description": "Hash du mot de passe"
+        },
+        "is_public": {
+            "type": "boolean",
+            "example": true,
+            "description": "Défini si le compte est public ou privé"
+        },
+        "profilePicture": {
+            "type": "string",
+            "example": "img_aiixu_0.png",
+            "optional": true,
+            "description": "URL de la photo de profil"
+        },
+        "first_name": {
+            "type": "string",
+            "example": "Stévan",
+            "optional": true,
+            "description": "Prénom"
+        },
+        "last_name": {
+            "type": "string",
+            "example": "Corre",
+            "optional": true,
+            "description": "Nom"
+        }
+    },
+    "response": {
+        "id": {
+            "type": "number",
+            "description": "Identifiant unique de l'utilisateur créé"
+        }
+    }
+}

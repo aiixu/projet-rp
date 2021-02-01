@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="columns">
-        <div class="column is-3 is-fixed">
+        <div class="column is-3">
             <aside class="menu is-hidden-mobile">
                 <p class="menu-label">
                     Introduction
@@ -16,21 +16,112 @@
                     Reference
                 </p>
                 <ul class="menu-list">
-                    <li><a>Users</a></li>
-                    <!--li>
-                        <a>Manage Your Team</a>
+                    <li>
+                        <a>Users</a>
                         <ul>
-                            <li><a>Members</a></li>
-                            <li><a>Plugins</a></li>
-                            <li><a>Add a member</a></li>
-                            <li><a>Remove a member</a></li>
+                            <li><a>Create</a></li>
+                            <li><a>Delete</a></li>
+                            <li><a>Get</a></li>
+                            <li><a>Get List</a></li>
+                            <li><a>Update</a></li>
                         </ul>
-                    </li-->
+                    </li>
                 </ul>
             </aside>
         </div>
         <div class="column is-9">
+            <div class="content is-medium">
+                <h3 class="title is-2">Introduction</h3>
+
+
+                <h3 class="title is-3">Error Handling</h3>
+                
+                
+                <h3 class="title is-3">FAQ</h3>
+                
+                
+                <h3 class="title is-2">References</h3>
             
+            
+                <h3 class="title is-3">Users</h3>
+
+                <div class="box" *ngFor="let item of items" [id]="item.id">
+                    <h4 class="title is-3">{{ item.title }}</h4>
+                    <article class="message is-primary" *ngIf="item.description">
+                        <span class="icon has-text-primary"><i class="fa fa-js"></i></span>
+                        <div class="message-body">
+                            {{ item.description }}
+                        </div>
+                    </article>
+                
+                    <div class="mb-5">
+                        <h4 class="title is-5">URL</h4>
+                        <pre><code class="csharp">[{{ item.method.toUpperCase() }}] {{ item.route.toLowerCase() }}</code></pre>
+                    </div>
+
+                    <div class="mb-5" *ngIf="item.request">
+                        <h4 class="title is-5">Requête</h4>                      
+                        <div class="tabs ">
+                            <ul>
+                                <li (click)="item.tabRequest = 0" [ngClass]="item.tabRequest === 0 || !item.tabRequest ? 'is-active' : ''"><a>Raw</a></li>
+                                <li (click)="item.tabRequest = 1" [ngClass]="item.tabRequest === 1 ? 'is-active' : ''"><a>Table</a></li>
+                                <li (click)="item.tabRequest = 2" [ngClass]="item.tabRequest === 2 ? 'is-active' : ''"><a>Axios</a></li>
+                            </ul>
+                        </div>
+
+                        <div [hidden]="item.tabRequest !== 0 && item.tabRequest">
+                            <pre><code class="typescript">{{ formatRaw(item.request) }}</code></pre>
+                        </div>
+
+                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" [hidden]="item.tabRequest !== 1">
+                            <thead>
+                                <th>Nom</th>
+                                <th>Type</th>
+                                <th>Optionnel</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reqItem of formatTable(item.request)">
+                                    <td>{{ reqItem.name }}</td>
+                                    <td>{{ reqItem.type }}</td>
+                                    <td>{{ reqItem.optional }}</td>
+                                    <td>{{ reqItem.description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb-5" *ngIf="item.response">
+                        <h4 class="title is-5">Réponse</h4>
+                        <div class="tabs ">
+                            <ul>
+                                <li (click)="item.tabResponse = 0" [ngClass]="item.tabResponse === 0 || !item.tabResponse ? 'is-active' : ''"><a>Raw</a></li>
+                                <li (click)="item.tabResponse = 1" [ngClass]="item.tabResponse === 1 ? 'is-active' : ''"><a>Table</a></li>
+                                <li (click)="item.tabResponse = 2" [ngClass]="item.tabResponse === 2 ? 'is-active' : ''"><a>Axios</a></li>
+                            </ul>
+                        </div>
+
+                        <div [hidden]="item.tabResponse !== 0 && item.tabResponse">
+                            <pre><code class="typescript">{{ formatRaw(item.response) }}</code></pre>
+                        </div>
+
+                        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" [hidden]="item.tabResponse !== 1">
+                            <thead>
+                                <th>Nom</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let reqItem of formatTable(item.response)">
+                                    <td>{{ reqItem.name }}</td>
+                                    <td>{{ reqItem.type }}</td>
+                                    <td>{{ reqItem.description }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

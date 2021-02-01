@@ -7,6 +7,8 @@ import {ContactComponent } from './contact/contact.component';
 import {QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 
 import { ApiComponent } from './api/api.component';
+import { FaqComponent } from './faq/faq.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
@@ -23,10 +25,21 @@ const routes: Routes = [
   },
   {
     path: "contact",
-    component: ContactComponent},{
-    
+    component: ContactComponent
+  },
+  {
+    path: "registration",
+    component: RegistrationComponent
+  },
+  {
+    path: "faq",
+    component: FaqComponent
+  },
+  {
     path: "api",
     component: ApiComponent,
+
+
     children: [
       {
         path: "home",
