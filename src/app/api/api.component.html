@@ -17,13 +17,13 @@
                 </p>
                 <ul class="menu-list">
                     <li>
-                        <a>Users</a>
+                        <a>Utilisateurs</a>
                         <ul>
-                            <li><a>Create</a></li>
-                            <li><a>Delete</a></li>
-                            <li><a>Get</a></li>
-                            <li><a>Get List</a></li>
-                            <li><a>Update</a></li>
+                            <li><a>Créer un utilisateur</a></li>
+                            <li><a>Supprimer un utilisateur</a></li>
+                            <li><a>Récupérer un utilisateur</a></li>
+                            <li><a>Récupérer plusieurs utilisateurs</a></li>
+                            <li><a>Mettre à jour un utilisateur</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             
                 <h3 class="title is-3">Users</h3>
 
-                <div class="box" *ngFor="let item of items" [id]="item.id">
+                <div class="box mb-6" *ngFor="let item of items" [id]="item.id">
                     <h4 class="title is-3">{{ item.title }}</h4>
                     <article class="message is-primary" *ngIf="item.description">
                         <span class="icon has-text-primary"><i class="fa fa-js"></i></span>

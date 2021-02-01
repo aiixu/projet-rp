@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "~node_modules/bulma/sass/utilities/initial-variables";
+@import "~node_modules/bulma/sass/utilities/functions";
+
 // put Bulma variables here
+$primary: $orange;
 
 // Import only what you need from Bulma
 @import '~node_modules/bulma/sass/base/_all';
@@ -8,6 +12,6 @@
 @import '~node_modules/bulma/sass/elements/_all';
 @import '~node_modules/bulma/sass/form/_all';
 @import '~node_modules/bulma/sass/grid/_all';
-@import '~node_modules/bulma/sass/helpers/_all';
 @import '~node_modules/bulma/sass/layout/_all';
 @import '~node_modules/bulma/sass/utilities/_all';
+@import '~node_modules/bulma/sass/helpers/_all';
