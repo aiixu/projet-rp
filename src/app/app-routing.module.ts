@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ApiComponent } from './api/api.component';
+
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import {ContactComponent } from './contact/contact.component';
-import {RegistrationComponent } from './registration/registration.component';
-
-import { ApiComponent } from './api/api.component';
-import { from } from 'rxjs';
+import { ContactComponent } from './contact/contact.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
   {
@@ -29,7 +28,6 @@ const routes: Routes = [
   {
     path: "api",
     component: ApiComponent,
-
 
     children: [
       {

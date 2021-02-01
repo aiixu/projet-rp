@@ -1,25 +1,28 @@
+import { Expose, plainToClass, classToPlain } from 'class-transformer';
 import axios from "axios";
 
 export class CreateUserRequest
 {
-    public post(request: NonNullable<CreateUserRequestModel>): Promise<CreateUserResponseModel> {
-        return axios.post("localhost/api/users", request);
+    public async post(request: NonNullable<CreateUserRequestModel>): Promise<CreateUserResponseModel> {
+        const response: any = await axios.post("http://localhost/api/users", classToPlain(request));
+        return plainToClass(CreateUserResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }
 
 export class CreateUserRequestModel
 {
-    public username: string | undefined;
-    public email: string | undefined;
-    public isPublic: boolean | undefined;
-    public passwordHash: string | undefined;
-    public profilePicture: string | undefined;
+    @Expose() public username: string;
+    @Expose() public email: string;
+    @Expose({ name: "is_public" }) public isPublic: boolean;
+    @Expose({ name: "password_hash" }) public passwordHash: string;
+    @Expose({ name: "profile_picture" }) public profilePicture: string;
 
-    public firstName: string | undefined;
-    public lastName: string | undefined;
+    @Expose({ name: "first_name" }) public firstName: string;
+    @Expose({ name: "last_name" }) public lastName: string;
 }
 
 export class CreateUserResponseModel
 {
-    public id: number | undefined;
+    @Expose() public id: number;
+    @Expose() public message: string;
 }

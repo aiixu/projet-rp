@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUsersRequest, GetUsersRequestModel } from 'src/apiwrapper/rpprojectapi';
+import { DeleteUserRequest, DeleteUserRequestModel } from 'src/apiwrapper/users/deleteUserRequest';
+import { UpdateUserRequest, UpdateUserRequestModel } from 'src/apiwrapper/users/updateUserRequest';
 
 import CreateUserJson from 'src/assets/json/api/users/createUser.json';
 import DeleteUserJson from 'src/assets/json/api/users/deleteUser.json';
@@ -21,13 +22,6 @@ export class ApiComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    const request: GetUsersRequest = new GetUsersRequest();
-    request.get(new GetUsersRequestModel())
-      .then(res =>
-        {
-          console.log(res);
-        })
-      .catch(console.error);
   }
 
   formatRaw(obj: NonNullable<any>, indentLevel: number = 1, isSubObject: boolean = false, isLastObject: boolean = true): string {
