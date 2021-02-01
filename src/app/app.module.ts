@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RegistrationComponent } from './registration/registration.component';
     ProfileComponent,
     ApiComponent,
     RegistrationComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,

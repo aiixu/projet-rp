@@ -7,7 +7,7 @@ import {ContactComponent } from './contact/contact.component';
 import {RegistrationComponent } from './registration/registration.component';
 
 import { ApiComponent } from './api/api.component';
-import { from } from 'rxjs';
+import { FaqComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {
@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: "registration",
     component: RegistrationComponent
+  },
+  {
+    path: "faq",
+    component: FaqComponent
   },
   {
     path: "api",
