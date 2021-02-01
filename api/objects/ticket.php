@@ -1,36 +1,32 @@
 <?php
-    class User
+    class Ticket
     {
         // database connection and table name
         private $conn;
-        private $table_name = "users";
-    
+        private $table_name = "tickets";
+
         // object properties
         public $id;
-        public $username;
-        public $email;
-        public $password_hash;
-        public $is_public;
-        public $profile_picture;
-        public $first_name;
-        public $last_name;
-    
+        public $sender_name;
+        public $sender_mail;
+        public $message;
+        public $date;
+
         // constructor with $db as database connection
         public function __construct($db)
         {
           $this->conn = $db;
         }
 
-        // get specific user
+        // get specific ticket
         function getOne()
         {
-          // query to get the user
+          // query to get the ticket
           $query = "SELECT
-                      `username`,
-                      `is_public`,
-                      `profile_picture`,
-                      `first_name`,
-                      `last_name`
+                      `sender_name`,
+                      `sender_mail`,
+                      `message`,
+                      `date`
                     FROM 
                       `$this->table_name`
                     WHERE 
@@ -45,34 +41,32 @@
           // get retrieved row
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-          if(!isset($row["username"]))
+          if(!isset($row["sender_name"]))
           {
             return;
           }
 
           // set values to object properties
-          $this->username = $row["username"];
-          $this->is_public = $row["is_public"];
-          $this->profile_picture = $row["profile_picture"];
-          $this->first_name = $row["first_name"];
-          $this->last_name = $row["last_name"];
+          $this->senderName = $row["sender_name"];
+          $this->senderMail = $row["sender_mail"];
+          $this->message = $row["message"];
+          $this->date = $row["date"];
         }
 
-        // get all users
+        // get all tickets
         function getAll()
         {
-          // query to select all users and order by their username
+          // query to select all tickets and order by their date
           $query = "SELECT 
                       `id`,
-                      `username`,
-                      `is_public`,
-                      `profile_picture`,
-                      `first_name`,
-                      `last_name`
+                      `sender_name`,
+                      `sender_mail`,
+                      `message`,
+                      `date`
                     FROM 
                       `$this->table_name`
                     ORDER BY 
-                      `username` ASC";
+                      `date` ASC";
 
           // prepare query statement
           $stmt = $this->conn->prepare($query);
@@ -130,49 +124,6 @@
             return true;
           }
           
-          return false;
-        }
-
-        // update user 
-        function update()
-        {
-          $fields = "";
-
-          function addField(&$fields, $fname, &$usrvar)
-          {
-            if(isset($usrvar))
-            {
-              $usrvar = htmlspecialchars(strip_tags($usrvar));
-              $fields .= "`$fname` = '$usrvar',";
-            }
-          }
-
-          addField($fields, "username", $this->username);
-          addField($fields, "email", $this->email);
-          addField($fields, "is_public", $this->is_public);
-          addField($fields, "profile_picture", $this->profile_picture);
-          
-          //addField($fields, $this->first_name);
-          //addField($fields, $this->last_name);
-
-          $fields = rtrim($fields, ',');
-
-          // update query
-          $query = "UPDATE
-                      `$this->table_name`
-                    SET
-                      $fields
-                    WHERE
-                      `id` = $this->id";
-
-          // prepare query statement
-          $stmt = $this->conn->prepare($query);
-
-          if($stmt->execute())
-          {
-            return true;
-          }
-
           return false;
         }
 
