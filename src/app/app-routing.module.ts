@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ApiComponent } from './api/api.component';
-
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
@@ -13,13 +11,16 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import {MajorMinorComponent} from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
 
+import { ApiComponent } from './api/api.component';
+
+
+
 
 const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
   },
- 
   {
     path: "profile",
     component: ProfileComponent
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: "who-are-we",
     component: WhoAreWeComponent
+  },
+  {
+    path: "faq",
+    component: FaqComponent
   },
   {
     path: "api",
