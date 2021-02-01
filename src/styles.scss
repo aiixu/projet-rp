@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+// put Bulma variables here
+
+// Import only what you need from Bulma
+@import '~node_modules/bulma/sass/utilities/_all';
+@import '~node_modules/bulma/sass/base/_all';
+@import '~node_modules/bulma/sass/elements/button';
+@import '~node_modules/bulma/sass/elements/container';
+@import '~node_modules/bulma/sass/elements/title';
+@import '~node_modules/bulma/sass/form/_all';
+@import '~node_modules/bulma/sass/components/navbar';
+@import '~node_modules/bulma/sass/layout/hero';
+@import '~node_modules/bulma/sass/layout/section';
