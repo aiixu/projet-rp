@@ -16,6 +16,7 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    
     ProfileComponent,
     ContactComponent,
    
