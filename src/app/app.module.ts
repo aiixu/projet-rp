@@ -8,6 +8,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { CreateRPComponent } from './create-rp/create-rp.component';
+import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { RegistrationComponent } from './registration/registration.component';
     ProfileComponent,
     ApiComponent,
     RegistrationComponent,
+    ConnexionComponent,
+    CreateRPComponent,
+    WhoAreWeComponent,
   ],
   imports: [
     BrowserModule,

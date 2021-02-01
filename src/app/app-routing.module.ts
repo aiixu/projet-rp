@@ -3,11 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import {ContactComponent } from './contact/contact.component';
-import {RegistrationComponent } from './registration/registration.component';
+import { ContactComponent } from './contact/contact.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { CreateRPComponent } from './create-rp/create-rp.component';
+import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 
 import { ApiComponent } from './api/api.component';
 import { from } from 'rxjs';
+
+
 
 const routes: Routes = [
   {
@@ -25,6 +30,18 @@ const routes: Routes = [
   {
     path: "registration",
     component: RegistrationComponent
+  },
+  {
+    path: "connexion",
+    component: ConnexionComponent
+  },
+  {
+    path: "create-rp",
+    component: CreateRPComponent
+  },
+  {
+    path: "who-are-we",
+    component: WhoAreWeComponent
   },
   {
     path: "api",
