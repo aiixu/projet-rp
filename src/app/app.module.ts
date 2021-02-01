@@ -7,18 +7,20 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
+import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    QuiSommesNousComponent,
     ProfileComponent,
     ContactComponent,
-   
-    ProfileComponent,
-    ApiComponent,
     RegistrationComponent,
+    FaqComponent,
+    ApiComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<h1 class="TittleRP">Créez ton RP</h1>
+
+<div class="content-wrapper">    
+    <div>Décrit l'univers de ton RP :</div>
+    <form>
+        <TEXtarea onkeyup="test(this,10);" rows=5 cols=150></TEXtarea>
+        <script type="text/javascript">
+            function test(obj,minRows){
+                var txt=obj.value,
+                rows=obj.rows,
+                nbRows=txt.split('\n').length;
+                if(nbRows>rows){
+                    obj.rows=obj.rows+1;
+                }else if(rows>minRows){
+                    obj.rows=obj.rows-1;
+                }
+            }
+            </script>
+    </form>
+    <div>Écrit ton histoire :</div>
+    <form>
+        <TEXtarea onkeyup="test(this,10);" rows=10 cols=150></TEXtarea>
+        <script type="text/javascript">
+            function test(obj,minRows){
+                var txt=obj.value,
+                rows=obj.rows,
+                nbRows=txt.split('\n').length;
+                if(nbRows>rows){
+                    obj.rows=obj.rows+1;
+                }else if(rows>minRows){
+                    obj.rows=obj.rows-1;
+                }
+            }
+            </script>
+    </form>
+
+    <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Publier</button>
+        </div>
+    </div>
+
+</div>
