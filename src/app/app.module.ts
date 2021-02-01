@@ -11,6 +11,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import { MajorMinorComponent } from './major-minor/major-minor.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
     ConnexionComponent,
     CreateRPComponent,
     WhoAreWeComponent,
+    MajorMinorComponent,
   ],
   imports: [
     BrowserModule,

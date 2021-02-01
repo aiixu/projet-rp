@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import {MajorMinorComponent} from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
 
 import { ApiComponent } from './api/api.component';
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: "connexion",
     component: ConnexionComponent
+  },
+  {
+    path: "+18",
+    component: MajorMinorComponent
   },
   {
     path: "create-rp",
