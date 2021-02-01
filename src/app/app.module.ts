@@ -21,14 +21,10 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
    
     ProfileComponent,
     ApiComponent,
-<<<<<<< HEAD
     RegistrationComponent,
     ConnexionComponent,
     CreateRPComponent,
     WhoAreWeComponent,
-=======
-    QuiSommesNousComponent,
->>>>>>> ce72e52e48e1b5bce8a428bb49014a23aaa8fc2a
   ],
   imports: [
     BrowserModule,

@@ -20,10 +20,7 @@ const routes: Routes = [
     path: "home",
     component: HomeComponent
   },
-  {
-    path: "QuiSommesNous",
-    component: QuiSommesNousComponent
-  },
+ 
   {
     path: "profile",
     component: ProfileComponent
