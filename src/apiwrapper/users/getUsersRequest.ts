@@ -1,5 +1,5 @@
-import axios from "axios";
 import { Expose, Type, plainToClass } from 'class-transformer';
+import axios from "axios";
 
 export class GetUsersRequest
 {
@@ -34,12 +34,12 @@ export class GetUsersResponseUserModel
 {
     @Expose() public username: string;
     @Expose() public email: string;
-    @Expose() public isPublic: boolean = false;
-    @Expose() public passwordHash: string;
-    @Expose() public profilePicture: string;
+    @Expose({ name: "is_public" }) public isPublic: boolean = false;
+    @Expose({ name: "password_hash" }) public passwordHash: string;
+    @Expose({ name: "profile_picture" }) public profilePicture: string;
 
-    @Expose() public firstName: string;
-    @Expose() public lastName: string;
+    @Expose({ name: "first_name" }) public firstName: string;
+    @Expose({ name: "last_name" }) public lastName: string;
 }
 
 export class GetUsersResponsePagesModel
@@ -53,7 +53,7 @@ export class GetUsersResponsePagesModel
 
 export class GetUsersResponsePageModel
 {
-    @Expose() public is_current_page: boolean;
+    @Expose({ name: "is_current_page" }) public isCurrentPage: boolean;
     @Expose() public page: number;
     @Expose() public url: string;
 }

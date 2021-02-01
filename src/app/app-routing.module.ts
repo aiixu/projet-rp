@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ApiComponent } from './api/api.component';
+
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
@@ -9,10 +11,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 
-import { ApiComponent } from './api/api.component';
 import { FaqComponent } from './faq/faq.component';
-
-
 
 
 const routes: Routes = [
@@ -48,7 +47,6 @@ const routes: Routes = [
   {
     path: "api",
     component: ApiComponent,
-
 
     children: [
       {
