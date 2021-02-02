@@ -14,35 +14,45 @@
                     
                 </div>
 
-                <form #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
-                    <input ngModel type="text" name="a">
-                    <button type="submit">Submit</button>
-                </form>
+              <!-- ================== <form  #signupForm="ngForm" (ngSubmit)=" submitTickets(signupForm)">
+                    <input ngModel type="text" name="a">===============================================--> 
+                   
+         
                 
-                <div class="column is-one-third has-text-left">
+                <form #signupForm="ngForm" (ngSubmit)=" submitTickets(signupForm)" class="column is-one-third has-text-left">
                     <div class="field">
                         <label class="label">Nom</label>
                         <div class="control">
-                            <input class="input is-medium" type="text">
+                            <input ngModel name = "Name" class="input is-medium" type="text">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Email</label>
                         <div class="control">
-                            <input class="input is-medium" type="text">
+                            <input ngModel name= "Email" class="input is-medium" type="text">
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Message</label>
                         <div class="control">
-                            <textarea class="textarea is-medium"></textarea>
+                            <input ngModel name="textarea" type= "textarea" class="textarea is-medium">
                         </div>
                     </div>
                     <div class="control">
+                      
                         <button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium">Envoyer le message</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+    <div class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <!-- Any other Bulma elements you want -->
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+      
+
 </section>

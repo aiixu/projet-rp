@@ -94,8 +94,8 @@ export class ApitestComponent implements OnInit {
     ];
 
     for(const user of userArray)
-    {
-      const request: CreateUserRequest = new CreateUserRequest();
+    { 
+     const request: CreateUserRequest = new CreateUserRequest();
       const requestBDD : CreateUserRequestModel = new CreateUserRequestModel();
   
       requestBDD.username = user.username;
