@@ -13,6 +13,7 @@ import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { ApitestComponent } from './apitest/apitest.component';
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ApitestComponent } from './apitest/apitest.component';
     
     ProfileComponent,
     ContactComponent,
-   
+    FaqComponent,
     ProfileComponent,
     ApiComponent,
     RegistrationComponent,
