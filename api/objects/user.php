@@ -139,19 +139,19 @@
         {
           $fields = "";
 
-          function addField(&$fields, &$usrvar)
+          function addField(&$fields, $fname, &$usrvar)
           {
             if(isset($usrvar))
             {
               $usrvar = htmlspecialchars(strip_tags($usrvar));
-              $fields .= "`username` = '$usrvar',";
+              $fields .= "`$fname` = '$usrvar',";
             }
           }
 
-          addField($fields, $this->username);
-          addField($fields, $this->email);
-          addField($fields, $this->is_public);
-          addField($fields, $this->profile_picture);
+          addField($fields, "username", $this->username);
+          addField($fields, "email", $this->email);
+          addField($fields, "is_public", $this->is_public);
+          addField($fields, "profile_picture", $this->profile_picture);
           
           //addField($fields, $this->first_name);
           //addField($fields, $this->last_name);

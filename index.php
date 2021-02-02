@@ -9,6 +9,19 @@
 
     include "api/config/database.php";
 
+    // from https://stackoverflow.com/questions/57901808/cors-preflight-request-doesnt-pass-access-control-check-it-does-not-have-http
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+    header('Content-Type: application/json');
+
+    if ($_SERVER["REQUEST_METHOD"] == "OPTIONS") 
+    {
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
+        header("HTTP/1.1 200 OK");
+        die();
+    }
     // create user
     Route::add("/api/users", function()
     {
@@ -69,8 +82,8 @@
         $db = $database->getConnection();
 
         // initialize request
-        $reuest_model = new GetUserRequestModel();
-        $reuest_model->id = $id;
+        $request_model = new GetUserRequestModel();
+        $request_model->id = $id;
 
         $request = new GetUserRequest($db);
         $request->get($request_model);

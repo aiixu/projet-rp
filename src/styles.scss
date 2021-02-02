@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~node_modules/bulma/sass/utilities/initial-variables";
+@import "~node_modules/bulma/sass/utilities/functions";
+
+//Codes couleur :#f9fbfc (blanc), #203961 (bleu foncé), # a2cdb8 (vert), #e1755e(rouge saumon), #5d554b (marron).
+// put Bulma variables here
+$primary: #e1755e;
+$scheme-main: #f9fbfc;
+$text: #203961;
+
+// Import only what you need from Bulma
+@import '~node_modules/bulma/bulma.sass';
+//@import "~node_modules/bulma-prefers-dark/bulma-prefers-dark.sass";

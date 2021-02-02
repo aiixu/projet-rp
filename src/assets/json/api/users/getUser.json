@@ -1,0 +1,29 @@
+{
+    "id": "users_getOne",
+    "title": "Récupérer un utilisateur",
+    "description": "Requête permettant de récupérer des informations sur un utilisateur depuis la base de données. Certains champs ne sont disponibles que si l'utilisateur est en public",
+    "method": "get",
+    "route": "/api/users/{id}",
+    "response": {
+        "username": {
+            "type": "string",
+            "description": "Nom d'utilisateur"
+        },
+        "is_public": {
+            "type": "boolean",
+            "description": "Si l'utilisateur est, ou non, en public."
+        },
+        "profile_picture": {
+            "type": "string",
+            "description": "URL de la photo de profil"
+        },
+        "first_name": {
+            "type": "string",
+            "description": "Prénom"
+        },
+        "last_name": {
+            "type": "string",
+            "description": "Nom"
+        }
+    }
+}

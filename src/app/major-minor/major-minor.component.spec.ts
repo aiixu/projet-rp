@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QuiSommesNousComponent } from './qui-sommes-nous.component';
+import { MajorMinorComponent } from './major-minor.component';
 
-describe('QuiSommesNousComponent', () => {
-  let component: QuiSommesNousComponent;
-  let fixture: ComponentFixture<QuiSommesNousComponent>;
+describe('MajorMinorComponent', () => {
+  let component: MajorMinorComponent;
+  let fixture: ComponentFixture<MajorMinorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuiSommesNousComponent ]
+      declarations: [ MajorMinorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QuiSommesNousComponent);
+    fixture = TestBed.createComponent(MajorMinorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

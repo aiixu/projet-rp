@@ -7,17 +7,19 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
-import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import { MajorMinorComponent } from './major-minor/major-minor.component';
+import { ApitestComponent } from './apitest/apitest.component';
 import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    
     ProfileComponent,
     ContactComponent,
     FaqComponent,
@@ -27,7 +29,8 @@ import { FaqComponent } from './faq/faq.component';
     ConnexionComponent,
     CreateRPComponent,
     WhoAreWeComponent,
-    QuiSommesNousComponent,
+    MajorMinorComponent,
+    ApitestComponent,
   ],
   imports: [
     BrowserModule,

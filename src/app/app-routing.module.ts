@@ -3,24 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import {ContactComponent } from './contact/contact.component';
-import {QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
+import { ContactComponent } from './contact/contact.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { ConnexionComponent } from './connexion/connexion.component';
+import { CreateRPComponent } from './create-rp/create-rp.component';
+import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import {MajorMinorComponent} from './major-minor/major-minor.component';
+import { FaqComponent } from './faq/faq.component';
 
 import { ApiComponent } from './api/api.component';
-import { FaqComponent } from './faq/faq.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
-import { CreateRPComponent } from './create-rp/create-rp.component';
-import { ConnexionComponent } from './connexion/connexion.component';
+import { ApitestComponent } from './apitest/apitest.component';
 
 const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
-  },
-  {
-    path: "QuiSommesNous",
-    component: QuiSommesNousComponent
   },
   {
     path: "profile",
@@ -39,6 +36,10 @@ const routes: Routes = [
     component: ConnexionComponent
   },
   {
+    path: "+18",
+    component: MajorMinorComponent
+  },
+  {
     path: "create-rp",
     component: CreateRPComponent
   },
@@ -51,9 +52,12 @@ const routes: Routes = [
     component: FaqComponent
   },
   {
+    path: "apitest",
+    component: ApitestComponent
+  },
+  {
     path: "api",
     component: ApiComponent,
-
 
     children: [
       {
