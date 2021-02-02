@@ -3,22 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-<<<<<<< HEAD
-import { ContactComponent } from './contact/contact.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { CreateRPComponent } from './create-rp/create-rp.component';
-import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
-=======
 import {ContactComponent } from './contact/contact.component';
 import {QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
->>>>>>> ce72e52e48e1b5bce8a428bb49014a23aaa8fc2a
 
 import { ApiComponent } from './api/api.component';
 import { FaqComponent } from './faq/faq.component';
 import { RegistrationComponent } from './registration/registration.component';
-
-
+import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
+import { CreateRPComponent } from './create-rp/create-rp.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 const routes: Routes = [
   {
@@ -42,7 +35,6 @@ const routes: Routes = [
     component: RegistrationComponent
   },
   {
-<<<<<<< HEAD
     path: "connexion",
     component: ConnexionComponent
   },
@@ -53,10 +45,10 @@ const routes: Routes = [
   {
     path: "who-are-we",
     component: WhoAreWeComponent
-=======
+  },
+  {
     path: "faq",
     component: FaqComponent
->>>>>>> ce72e52e48e1b5bce8a428bb49014a23aaa8fc2a
   },
   {
     path: "api",

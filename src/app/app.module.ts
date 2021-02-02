@@ -7,14 +7,12 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { ApiComponent } from './api/api.component';
-<<<<<<< HEAD
+import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
-=======
-import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.component';
->>>>>>> ce72e52e48e1b5bce8a428bb49014a23aaa8fc2a
+import { FaqComponent } from './faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +20,14 @@ import { QuiSommesNousComponent } from './qui-sommes-nous/qui-sommes-nous.compon
     HomeComponent,
     ProfileComponent,
     ContactComponent,
-   
+    FaqComponent,
     ProfileComponent,
     ApiComponent,
-<<<<<<< HEAD
     RegistrationComponent,
     ConnexionComponent,
     CreateRPComponent,
     WhoAreWeComponent,
-=======
     QuiSommesNousComponent,
->>>>>>> ce72e52e48e1b5bce8a428bb49014a23aaa8fc2a
   ],
   imports: [
     BrowserModule,
