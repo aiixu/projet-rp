@@ -7,11 +7,16 @@
     include "api/_users/updateUserRequest.php";
     include "api/_users/deleteUserRequest.php";
 
+    include "api/_tickets/createTicketRequest.php";
+    include "api/_tickets/getTicketsRequest.php";
+    include "api/_tickets/getTicketRequest.php";
+    include "api/_tickets/deleteTicketRequest.php";
+
     include "api/config/database.php";
 
     // from https://stackoverflow.com/questions/57901808/cors-preflight-request-doesnt-pass-access-control-check-it-does-not-have-http
     header('Access-Control-Allow-Origin: *');
-    header("Access-Control-Allow-Methods: HEAD, GET, POST, PUT, PATCH, DELETE, OPTIONS");
+    header("Access-Control-Allow-Methods: HEAD, GET, PUT, PATCH, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method,Access-Control-Request-Headers, Authorization");
     header('Content-Type: application/json');
 
@@ -22,6 +27,9 @@
         header("HTTP/1.1 200 OK");
         die();
     }
+    
+    /// USERS
+
     // create user
     Route::add("/api/users", function()
     {
@@ -123,6 +131,86 @@
         $request_model->id = $id;
 
         $request = new DeleteUserRequest($db);
+        $request->delete($request_model);
+    }, "delete");
+    
+
+    /// TICKETS
+
+    // create ticket
+    Route::add("/api/tickets", function()
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new CreateTicketRequestModel();
+
+        $request_content = json_decode(file_get_contents("php://input"));
+
+        $request_model->sender_mail = $request_content->sender_mail;
+        $request_model->sender_name = $request_content->sender_name;  
+        $request_model->message = $request_content->message;
+
+        // create and send request
+        $request = new CreateTicketRequest($db);
+        $request->post($request_model);
+    }, "post");
+
+    // get list of tickets
+    Route::add("/api/tickets", function() 
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $request_model = new GetTicketsRequestModel();
+        $request_model->page = 1;
+        $request_model->query = "";
+
+        if(isset($_GET["p"]))
+        {
+            $request_model->page = $_GET["p"];
+        }
+
+        if(isset($_GET["q"]))
+        {
+            $request_model->query = $_GET["q"];
+        }
+
+        // create and send request
+        $request = new GetTicketsRequest($db);
+        $request->get($request_model);
+    }, "get");
+
+    // get specific ticket
+    Route::add("/api/tickets/([0-9]*)", function($id) 
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new GetTicketRequestModel();
+        $request_model->id = $id;
+
+        $request = new GetTicketRequest($db);
+        $request->get($request_model);
+    }, "get");
+
+    // delete specific user
+    Route::add("/api/tickets/([0-9]*)", function($id) 
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new DeleteTicketRequestModel();
+        $request_model->id = $id;
+
+        $request = new DeleteTicketRequest($db);
         $request->delete($request_model);
     }, "delete");
 

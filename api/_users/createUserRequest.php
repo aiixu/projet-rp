@@ -71,10 +71,10 @@
         public function validateData()
         {
             return 
-                !empty($this->username) && 
-                !empty($this->email) && 
-                !empty($this->is_public) && 
-                !empty($this->password_hash);
+                isset($this->username) && 
+                isset($this->email) && 
+                isset($this->is_public) && 
+                isset($this->password_hash);
         }
     }
     
