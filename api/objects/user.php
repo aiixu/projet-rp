@@ -26,7 +26,6 @@
         {
           // query to get the user
           $query = "SELECT
-                      `id`,
                       `username`,
                       `is_public`,
                       `profile_picture`,
@@ -62,7 +61,7 @@
         // get all users
         function getAll()
         {
-          // query to select all users and order by they username
+          // query to select all users and order by their username
           $query = "SELECT 
                       `id`,
                       `username`,

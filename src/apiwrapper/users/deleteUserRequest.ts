@@ -1,6 +1,6 @@
 import { Expose, plainToClass } from 'class-transformer';
-import axios from "axios";
 import { environment } from 'src/environments/environment';
+import axios from "axios";
 
 export class DeleteUserRequest
 {

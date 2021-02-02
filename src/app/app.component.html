@@ -1,63 +1,69 @@
 <header>
-           
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <img height="50%" width="50" src="https://previews.123rf.com/images/novazaigen/novazaigen1812/novazaigen181200002/115735705-otter-head-vector-illustration.jpg"/>
-            </div>
-        
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="./home">Accueil</a>
-        
-                <a class="navbar-item" href="#ListeDesRP">Liste des RP</a>
-        
-                <div class="navbar-item has-dropdown is-hoverable">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <img
+        height="50%"
+        width="50"
+        src="https://previews.123rf.com/images/novazaigen/novazaigen1812/novazaigen181200002/115735705-otter-head-vector-illustration.jpg"
+      />
+    </div>
 
-                    <a class="navbar-link">Profil</a>
-        
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item" href="./profile">Compte</a>
-                        <a class="navbar-item" href="./create-rp">Créez un RP</a>
-                        <a class="navbar-item" href="./contact">Contact</a>
-                    </div>
-                </div>
-            
-            </div>
-        
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <!-- Barre de navigation -->
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="" placeholder="Rechercher">
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="./home">Accueil</a>
 
-                        <span class="icon is-left">
-                            <i class="fa fa-search"></i>
-                        </span>
+        <a class="navbar-item" href="#ListeDesRP">Liste des RP</a>
 
-                        <span class="icon is-right icon-link">
-                            <i class="fa fa-check"></i>
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-primary" href="./registration"><strong>S'inscrire</strong></a>
-                        <a class="button is-light" href="./connexion">Connexion</a>
-                    </div>
-                </div>
-            </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Profil</a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="./profile">Compte</a>
+            <a class="navbar-item" href="./create-rp">Créez un RP</a>
+            <a class="navbar-item" href="./contact">Contact</a>
+          </div>
         </div>
-    </nav>
-</header> 
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <!-- Barre de navigation -->
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="" placeholder="Rechercher" />
+
+            <span class="icon is-left">
+              <i class="fa fa-search"></i>
+            </span>
+
+            <span class="icon is-right icon-link">
+              <i class="fa fa-check"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary" href="./registration"
+              ><strong>S'inscrire</strong></a
+            >
+            <a class="button is-light" href="./connexion">Connexion</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
 
 <router-outlet></router-outlet>
 
-
 <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>RP project</strong> par Hugo, Stévan, Pierre et Marius.<a href="./who-are-we"> Qui sommes nous ?</a>
-      </p>
-    </div>
+  <div class="content has-text-centered">
+    <p>
+      <strong>RP project</strong> par Hugo, Stévan, Pierre et Marius.<a
+        href="./who-are-we"
+      >
+        Qui sommes nous ?</a
+      >
+    </p>
+  </div>
 </footer>

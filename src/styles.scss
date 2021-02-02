@@ -3,9 +3,11 @@
 @import "~node_modules/bulma/sass/utilities/initial-variables";
 @import "~node_modules/bulma/sass/utilities/functions";
 
-//Codes couleur :#f9fbfc (blanc), #203961 (bleu foncé), # a2cdb8 (vert), #e1755e(rouge saumon), #5d554b (marron).
+//Codes couleur :#f9fbfc (blanc), #203961 (bleu foncé), #a2cdb8 (vert), #e1755e(rouge saumon), #5d554b (marron).
 // put Bulma variables here
-$primary: #e1755e;
+$primary: #00ff84;
+$scheme-main: #f9fbfc;
+$text: #e1755e;
 
 // Import only what you need from Bulma
 @import '~node_modules/bulma/bulma.sass';
