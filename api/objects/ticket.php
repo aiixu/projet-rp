@@ -47,8 +47,8 @@
           }
 
           // set values to object properties
-          $this->senderName = $row["sender_name"];
-          $this->senderMail = $row["sender_mail"];
+          $this->sender_name = $row["sender_name"];
+          $this->sender_mail = $row["sender_mail"];
           $this->message = $row["message"];
           $this->date = $row["date"];
         }
@@ -81,37 +81,20 @@
         function create()
         {
           // sanitize
-          $this->username = htmlspecialchars(strip_tags($this->username));
-          $this->email = htmlspecialchars(strip_tags($this->email));
-          $this->password_hash = htmlspecialchars(strip_tags($this->password_hash));
-          $this->is_public = htmlspecialchars(strip_tags($this->is_public));
-          $this->profile_picture = htmlspecialchars(strip_tags($this->profile_picture));
+          $this->sender_mail = htmlspecialchars(strip_tags($this->sender_mail));
+          $this->sender_name = htmlspecialchars(strip_tags($this->sender_name));
+          $this->message = htmlspecialchars(strip_tags($this->message));
+          $this->date = date("Y-m-d H:i:s");
           
-          if($this->first_name || $this->last_name)
-          {
-            try
-            {
-              $this->first_name = htmlspecialchars(strip_tags($this->first_name));
-              $this->last_name = htmlspecialchars(strip_tags($this->last_name));
-            }
-            catch(Exception $e)
-            {
-              return false;
-            }
-          }
-        
           // query to insert user
           $query = "INSERT 
                     INTO
                       `$this->table_name`
                     SET
-                      `username`        = '$this->username',
-                      `email`           = '$this->email',
-                      `password_hash`   = '$this->password_hash',
-                      `is_public`       = '$this->is_public',
-                      `profile_picture` = '$this->profile_picture',
-                      `first_name`      = '$this->first_name',
-                      `last_name`       = '$this->last_name'";
+                      `sender_mail` = '$this->sender_mail',
+                      `sender_name` = '$this->sender_name',
+                      `message`     = '$this->message',
+                      `date`        = '$this->date'";
       
           // prepare query
           $stmt = $this->conn->prepare($query);
@@ -161,21 +144,17 @@
 
           // select all query
           $query = "SELECT
-                      `id`,
-                      `username`,
-                      `is_public`,
-                      `profile_picture`,  
-                      `first_name`,
-                      `last_name`
+                      `sender_mail`,
+                      `sender_name`,
+                      `message`,
+                      `date` 
                     FROM
                       `$this->table_name`
                     WHERE
-                      `username` LIKE '$keywords' OR 
-                      (`is_public` = 1 AND 
-                      (`first_name` LIKE '$keywords' OR 
-                       `last_name` LIKE '$keywords'))
+                      `sender_mail` LIKE '$keywords' OR 
+                      `sender_name` LIKE '$keywords'
                     ORDER BY
-                      `username` ASC
+                      `date` ASC
                     LIMIT ?, ?";
 
           // prepare query statement
@@ -199,19 +178,15 @@
 
           // select all query
           $query = "SELECT
-                      `id`,
-                      `username`,
-                      `is_public`,
-                      `profile_picture`,  
-                      `first_name`,
-                      `last_name`
+                      `sender_mail`,
+                      `sender_name`,
+                      `message`,
+                      `date` 
                     FROM
                       `$this->table_name`
                     WHERE
-                      `username` LIKE '$keywords' OR 
-                      (`is_public` = 1 AND 
-                      (`first_name` LIKE '$keywords' OR 
-                       `last_name` LIKE '$keywords'))";
+                      `sender_mail` LIKE '$keywords' OR 
+                      `sender_name` LIKE '$keywords'";
 
           $stmt = $this->conn->prepare($query);
           $stmt->execute();
