@@ -13,6 +13,12 @@
                      <img src="assets/LoutreContact.png" alt="une loutre">
                     
                 </div>
+
+                <form #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
+                    <input ngModel type="text" name="a">
+                    <button type="submit">Submit</button>
+                </form>
+                
                 <div class="column is-one-third has-text-left">
                     <div class="field">
                         <label class="label">Nom</label>

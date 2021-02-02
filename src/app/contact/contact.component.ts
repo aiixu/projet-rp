@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseModel } from 'src/apiwrapper/users/getUsersRequest';
+import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
+
 export class ContactComponent implements OnInit {
 
   constructor() { }
@@ -12,4 +14,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  registerUser(form: NgForm) {
+    console.log(form.value);
+  }
 }

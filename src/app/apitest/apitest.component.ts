@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateUserRequest, CreateUserRequestModel } from 'src/apiwrapper/users/createUserRequest';
-import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseModel } from 'src/apiwrapper/users/getUsersRequest';
+import { GetUsersResponseModel } from 'src/apiwrapper/users/getUsersRequest';
 
 @Component({
   selector: 'app-apitest',
@@ -14,6 +14,10 @@ export class ApitestComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  testCreateUsers() {
+    
     const userArray :Array <any> = [
       {
         username: "michou",
