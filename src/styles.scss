@@ -6,7 +6,7 @@
 //Codes couleur :#f9fbfc (blanc), #203961 (bleu foncé), #a2cdb8 (vert), #e1755e(rouge saumon), #5d554b (marron).
 // put Bulma variables here
 
-$scheme-main: #f9fbfc;
+;
 $text: black;
 
 // variables crée a mettre dans les classe que vous voulez qui corresponde a peu pres a cela ,
@@ -18,7 +18,7 @@ $text: black;
 }
 .BoxColor2
 {
-  color:#203961;
+  color:#203961 !important;
 }
 .BoxColor3
 {
