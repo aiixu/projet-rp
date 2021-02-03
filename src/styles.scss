@@ -5,9 +5,61 @@
 
 //Codes couleur :#f9fbfc (blanc), #203961 (bleu foncé), #a2cdb8 (vert), #e1755e(rouge saumon), #5d554b (marron).
 // put Bulma variables here
-$primary: #00ff84;
+
 $scheme-main: #f9fbfc;
-$text: #e1755e;
+$text: black;
+
+// variables crée a mettre dans les classe que vous voulez qui corresponde a peu pres a cela ,
+//vous pouvez rajouté des var , mais penser a les annoté :)
+
+.BoxColor
+{
+  color: #f9fbfc;
+}
+.BoxColor2
+{
+  color:#203961;
+}
+.BoxColor3
+{
+  color:#5d554b;
+}
+.TitleColor
+{
+  color: #e1755e;
+}
+.TitleColor2
+{
+  color: black;
+}
+.TextColor
+{
+  color: black;
+}
+.TextColor2
+{
+  color: #f9fbfc;
+}
+
+.ButtonColor
+{
+  color:#203961;
+}
+.ButtonColor2
+{
+  color: #e1755e;
+}.HeadersColor
+{
+  color: #f9fbfc;
+}
+.FootersColor
+{
+  color: #f9fbfc;
+}
+.FunCanichePoneyColor
+{
+  color: #f9fbfc;
+}
 
 // Import only what you need from Bulma
 @import '~node_modules/bulma/bulma.sass';
