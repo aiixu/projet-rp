@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CreateTicketRequest, CreateTicketRequestModel } from 'src/apiwrapper/tickets/createTicketRequest';
 import { CreateUserRequest, CreateUserRequestModel } from 'src/apiwrapper/users/createUserRequest';
 import { GetUsersResponseModel } from 'src/apiwrapper/users/getUsersRequest';
 
@@ -13,7 +14,13 @@ export class ApitestComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    const request: CreateTicketRequest = new CreateTicketRequest();
+    const requestModel: CreateTicketRequestModel = new CreateTicketRequestModel("sender@gmail.com", "sender", "salut");
+
+    await request.post(requestModel)
+      .then(console.log)
+      .catch(console.error);
   }
 
   testCreateUsers() {
