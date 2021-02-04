@@ -15,18 +15,15 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  submitTickets(form: NgForm) {
-    console.log(form.value);
-    
+  submitTickets(form: NgForm) {    
     const request: CreateTicketRequest = new CreateTicketRequest();
-      const requestBDD : CreateTicketRequestModel = new CreateTicketRequestModel(form.value.Name, form.value.Email, form.value.textarea);
+    const requestBDD : CreateTicketRequestModel = new CreateTicketRequestModel(form.value.Name, form.value.Email, form.value.textarea);
        
-      console.log(requestBDD);
-      request.post(requestBDD)
-        .then((res: any) => {
-          console.log(res);
-          form.reset();
-  })
-}
+    request.post(requestBDD)
+      .then((res: any) => {
+        console.log(res);
+    });
 
+    form.reset();
+  }
 }
