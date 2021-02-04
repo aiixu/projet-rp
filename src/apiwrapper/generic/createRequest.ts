@@ -5,9 +5,9 @@ import axios from "axios";
 
 export abstract class CreateRequest extends Request
 {
-    protected constructor(tableName: string, method: string)
+    protected constructor(tableName: string)
     { 
-        super(tableName, method);
+        super(tableName);
     }
 
     protected async execute<T extends ResponseModel>(cls: ClassConstructor<T>, request: NonNullable<RequestModel>) : Promise<T> {

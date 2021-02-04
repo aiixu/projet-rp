@@ -1,16 +1,20 @@
-import { Expose, plainToClass, classToPlain } from 'class-transformer';
-import { environment } from 'src/environments/environment';
-import axios from "axios";
+import { Expose } from "class-transformer";
+import { CreateRequest } from "../generic/createRequest";
+import { RequestModel, ResponseModel } from "../generic/request";
 
-export class CreateTicketRequest
+export class CreateTicketRequest extends CreateRequest
 {
     public async post(request: NonNullable<CreateTicketRequestModel>): Promise<CreateTicketResponseModel> {
-        const response: any = await axios.post(`${environment.dburl}api/tickets`, classToPlain(request));
-        return plainToClass(CreateTicketResponseModel, response.data, { excludeExtraneousValues: true });
+        return super.execute(CreateTicketResponseModel, request);;
+    }
+
+    public constructor()
+    {
+        super("tickets");
     }
 }
 
-export class CreateTicketRequestModel
+export class CreateTicketRequestModel extends RequestModel
 {
     @Expose({ name: "sender_mail" }) public senderMail: string;
     @Expose({ name: "sender_name" }) public senderName: string;
@@ -18,13 +22,15 @@ export class CreateTicketRequestModel
     
     public constructor(senderMail: string, senderName: string, message: string)
     {
+        super();
+        
         this.senderMail = senderMail;
         this.senderName = senderName;
         this.message = message;
     }
 }
 
-export class CreateTicketResponseModel
+export class CreateTicketResponseModel extends ResponseModel
 {
     @Expose() public id: number;
 }
