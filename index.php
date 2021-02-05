@@ -11,6 +11,10 @@
     include "api/_tickets/getTicketsRequest.php";
     include "api/_tickets/getTicketRequest.php";
     include "api/_tickets/deleteTicketRequest.php";
+    
+    include "api/_messages/sendMessageRequest.php";
+    include "api/_messages/deleteMessageRequest.php";
+    include "api/_messages/getMessageRequest.php";
 
     include "api/config/database.php";
 
@@ -214,5 +218,60 @@
         $request->delete($request_model);
     }, "delete");
 
+    // send message
+    Route::add("/api/messages", function()
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new SendMessageRequestModel();
+        
+        // transfer json -> request model
+        $request_content = json_decode(file_get_contents("php://input"));
+
+        $request_model->sender_id = $request_content->sender_id;
+        $request_model->receiver_id = $request_content->receiver_id;
+        $request_model->text = $request_content->text;
+
+        // send request
+        $request = new SendMessageRequest($db);
+        $request->post($request_model);
+    }, "post");
+
+    // delete message
+    Route::add("/api/messages/([0-9]*)", function($id)
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new DeleteMessageRequestModel();
+        $request_model->id = $id;
+
+        // send request
+        $request = new DeleteMessageRequest($db);
+        $request->delete($request_model);
+    }, "delete");
+
+    // get specific message
+    Route::add("/api/messages/([0-9]*)", function($id)
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new GetMessageRequestModel();
+        $request_model->id = $id;
+
+        // send request
+        $request = new GetMessageRequest($db);
+        $request->get($request_model);
+    }, "get");
+
     Route::run("/");
 ?>
+

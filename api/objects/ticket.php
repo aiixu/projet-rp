@@ -95,7 +95,7 @@
                       `sender_name` = '$this->sender_name',
                       `message`     = '$this->message',
                       `date`        = '$this->date'";
-      
+
           // prepare query
           $stmt = $this->conn->prepare($query);
           

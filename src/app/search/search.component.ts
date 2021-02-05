@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit
   users: Array<GetUsersResponseUserModel>;
 
   params: any;
+  query: string;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -28,6 +29,8 @@ export class SearchComponent implements OnInit
       const query: string = params["q"] || "";
       const page: number = Number(params["p"]) || 1;
       
+      this.query = query;
+
       this.search(filter, query, page);
     });
   }
