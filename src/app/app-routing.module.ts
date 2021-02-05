@@ -11,7 +11,12 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
+<<<<<<< HEAD
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+
+=======
 import { ViewProfileComponent} from './view-profile/view-profile.component'
+>>>>>>> 5676b443aa07d21d077131ae9d2948437efe7e67
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { SearchComponent } from './search/search.component';
@@ -39,10 +44,10 @@ const routes: Routes = [
   },
 
   
-    {
-      path: "view-profile",
-      component: ViewProfileComponent
-    },
+  {
+    path: "view-profile",
+    component: ViewProfileComponent
+  },
 
   {
     path: "+18",
