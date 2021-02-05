@@ -14,6 +14,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { ViewProfileComponent} from './view-profile/view-profile.component'
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -78,7 +79,10 @@ const routes: Routes = [
       }
     ]
   },
-  
+  {
+    path: "search",
+    component: SearchComponent
+  },
   {
     path: "",
     redirectTo: "/home",

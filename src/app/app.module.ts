@@ -15,6 +15,7 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { FaqComponent } from './faq/faq.component';
+import { SearchComponent } from './search/search.component';
 import { AdministrationComponent } from './administration/administration.component';
 
 @NgModule({
@@ -33,6 +34,7 @@ import { AdministrationComponent } from './administration/administration.compone
     WhoAreWeComponent,
     MajorMinorComponent,
     ApitestComponent,
+    SearchComponent,
     AdministrationComponent
   ],
   imports: [
