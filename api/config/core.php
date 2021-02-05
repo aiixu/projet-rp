@@ -7,5 +7,7 @@
     $home_url = "http://localhost/api/";
     
     // set number of records per page
-    $records_per_page = 20;
+    $records_per_page = 5;
+
+    $levenshtein_max_dist = 3;
 ?>
