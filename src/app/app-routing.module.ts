@@ -10,8 +10,12 @@ import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
+<<<<<<< HEAD
 import { AdministrationComponent } from './administration/administration.component';
 
+=======
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+>>>>>>> bea90f2be749decd2f79e91c38d8b450e890226f
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 
@@ -36,6 +40,13 @@ const routes: Routes = [
     path: "connexion",
     component: ConnexionComponent
   },
+
+  
+    {
+      path: "view-profile",
+      component: ViewProfileComponent
+    },
+
   {
     path: "+18",
     component: MajorMinorComponent
