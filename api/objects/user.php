@@ -1,4 +1,6 @@
 <?php
+    include "api/config/core.php";
+
     class User
     {
         // database connection and table name
@@ -204,10 +206,12 @@
         // search products
         function search($keywords, $from_record_num, $records_per_page)
         {
+          global $levenshtein_max_dist;
+
           // sanitize
           $keywords = htmlspecialchars(strip_tags($keywords));
-          $keywords = "%{$keywords}%";
-
+          $p_keywords = "%{$keywords}%";
+          
           // select all query
           $query = "SELECT
                       `id`,
@@ -219,10 +223,13 @@
                     FROM
                       `$this->table_name`
                     WHERE
-                      `username` LIKE '$keywords' OR 
+                      `username` LIKE '$p_keywords' OR 
+                       LEVENSHTEIN(`username`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist OR
                       (`is_public` = 1 AND 
-                      (`first_name` LIKE '$keywords' OR 
-                       `last_name` LIKE '$keywords'))
+                      (`first_name` LIKE '$p_keywords' OR 
+                       `last_name` LIKE '$p_keywords' OR
+                       LEVENSHTEIN(`first_name`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist OR
+                       LEVENSHTEIN(`last_name`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist))
                     ORDER BY
                       `username` ASC
                     LIMIT ?, ?";
@@ -236,15 +243,17 @@
 
           // execute query
           $stmt->execute();
-
+          
           return $stmt;
         }
 
         public function searchCount($keywords)
         {
+          global $levenshtein_max_dist;
+          
           // sanitize
           $keywords = htmlspecialchars(strip_tags($keywords));
-          $keywords = "%{$keywords}%";
+          $p_keywords = "%{$keywords}%";
 
           // select all query
           $query = "SELECT
@@ -257,14 +266,17 @@
                     FROM
                       `$this->table_name`
                     WHERE
-                      `username` LIKE '$keywords' OR 
+                      `username` LIKE '$p_keywords' OR 
+                       LEVENSHTEIN(`username`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist OR
                       (`is_public` = 1 AND 
-                      (`first_name` LIKE '$keywords' OR 
-                       `last_name` LIKE '$keywords'))";
-
+                      (`first_name` LIKE '$p_keywords' OR 
+                       `last_name` LIKE '$p_keywords' OR
+                       LEVENSHTEIN(`first_name`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist OR
+                       LEVENSHTEIN(`last_name`, '$keywords') BETWEEN 0 AND $levenshtein_max_dist))";
+        
           $stmt = $this->conn->prepare($query);
           $stmt->execute();
-
+          
           return $stmt->rowCount();
         }
     }

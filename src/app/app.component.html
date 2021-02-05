@@ -27,26 +27,24 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <!-- Barre de navigation -->
-          <div class="control has-icons-left has-icons-right">
-            <input class="input" type="" placeholder="Rechercher" />
-
-            <span class="icon is-left">
-              <i class="fa fa-search"></i>
-            </span>
-
-            <span class="icon is-right icon-link">
-              <i class="fa fa-check"></i>
-            </span>
-          </div>
+          <form (submit)="onSubmit()">
+            <div class="field has-addons">
+              <div class="control">
+                <input #searchBarInput class="input" type="text" placeholder="Rechercher">
+              </div>
+              <div class="control">
+                <a class="button" (click)="onSubmit()">
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
+          </form>
         </div>
 
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary ButtonColor2" href="./registration"
-              ><strong>S'inscrire</strong></a
-            >
-            <a class="button is-light " href="./connexion">Connexion</a>
+            <a class="button is-primary" href="./registration"><strong>S'inscrire</strong></a>
+            <a class="button is-light" href="./connexion">Connexion</a>
           </div>
         </div>
       </div>

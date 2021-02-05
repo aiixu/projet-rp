@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   submitTickets(form: NgForm) {    
     const request: CreateTicketRequest = new CreateTicketRequest();
     const requestBDD : CreateTicketRequestModel = new CreateTicketRequestModel(form.value.Name, form.value.Email, form.value.textarea);
-       
+    
     request.post(requestBDD)
       .then((res: any) => {
         console.log(res);

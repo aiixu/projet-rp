@@ -1,0 +1,61 @@
+<div class="container pb-5 pt-6">
+    <div class="field is-horizontal">
+        <div class="field-body">
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Table</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select>
+                                    <option value="users">Utilisateurs</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Trier par</label>
+                </div>
+                <div class="field-body">
+                    <div class="field is-narrow">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select>
+                                    <option value="username">Nom d'utilisateur</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table is-fullwidth mt-5">
+        <tr *ngFor="let user of users">
+            <td>{{ user.username }}</td>
+        </tr>
+    </table>
+
+    <nav class="pagination is-centered pb-5 pt-5" role="navigation">
+        <button class="pagination-previous" [disabled]="currentPageIndex == 1" (click)="gotoPage(previousPageIndex)">Page précédente</button>
+        <button class="pagination-next" [disabled]="currentPageIndex == lastPageIndex" (click)="gotoPage(nextPageIndex)">Page suivante</button>
+        <ul class="pagination-list">
+            <li [style]="hideIf(previousPageIndex == 1 || currentPageIndex == 1)"><button class="pagination-link" (click)="gotoPage(1)">1</button></li>
+            <li [style]="hideIf(previousPageIndex == 1 || currentPageIndex == 1)"><span class="pagination-ellipsis">&hellip;</span></li>
+            <li [style]="hideIf(currentPageIndex == 1)"><button class="pagination-link" (click)="gotoPage(previousPageIndex)">{{ previousPageIndex }}</button></li>
+            
+            <li><button class="pagination-link is-current">{{ currentPageIndex }}</button></li>
+    
+            <li [style]="hideIf(currentPageIndex == lastPageIndex)"><button class="pagination-link" (click)="gotoPage(nextPageIndex)">{{ nextPageIndex }}</button></li>
+            <li [style]="hideIf(nextPageIndex == lastPageIndex || currentPageIndex == lastPageIndex)"><span class="pagination-ellipsis">&hellip;</span></li>
+            <li [style]="hideIf(nextPageIndex == lastPageIndex || currentPageIndex == lastPageIndex)"><button class="pagination-link" (click)="gotoPage(lastPageIndex)">{{ lastPageIndex }}</button></li>
+        </ul>
+    </nav>
+</div>

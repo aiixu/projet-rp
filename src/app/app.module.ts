@@ -15,8 +15,13 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { FaqComponent } from './faq/faq.component';
+<<<<<<< HEAD
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+=======
+import { SearchComponent } from './search/search.component';
+import { AdministrationComponent } from './administration/administration.component';
+>>>>>>> 5676b443aa07d21d077131ae9d2948437efe7e67
 
 @NgModule({
   declarations: [
@@ -34,8 +39,13 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     WhoAreWeComponent,
     MajorMinorComponent,
     ApitestComponent,
+<<<<<<< HEAD
     AdministrationComponent,
     ViewProfileComponent,
+=======
+    SearchComponent,
+    AdministrationComponent
+>>>>>>> 5676b443aa07d21d077131ae9d2948437efe7e67
   ],
   imports: [
     BrowserModule,
