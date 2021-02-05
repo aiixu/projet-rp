@@ -11,6 +11,7 @@ $text: black;
 
 // variables crée a mettre dans les classe que vous voulez qui corresponde a peu pres a cela ,
 //vous pouvez rajouté des var , mais penser a les annoté :)
+// Orange titre , sous titre bleu, texte noire
 
 .BoxColor
 {
@@ -18,15 +19,15 @@ $text: black;
 }
 .BoxColor2
 {
-  color:#203961 !important;
+  color:black !important;
 }
 .BoxColor3
 {
-  color:#5d554b;
+  background:#F5F5F5!important;
 }
 .TitleColor
 {
-  color: #e1755e;
+  color: #e1755e !important;
 }
 .TitleColor2
 {
@@ -34,7 +35,7 @@ $text: black;
 }
 .TextColor
 {
-  color: black;
+  color: #203961 !important;
 }
 .TextColor2
 {
@@ -47,7 +48,8 @@ $text: black;
 }
 .ButtonColor2
 {
-  color: #e1755e;
+  background: #e1755e !important;
+
 }.HeadersColor
 {
   color: #f9fbfc;
@@ -59,6 +61,11 @@ $text: black;
 .FunCanichePoneyColor
 {
   color: #f9fbfc;
+}
+.ButtonColor4
+{
+  background:#203961 !important;
+
 }
 
 // Import only what you need from Bulma

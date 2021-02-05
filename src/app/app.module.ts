@@ -16,6 +16,7 @@ import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { FaqComponent } from './faq/faq.component';
 import { SearchComponent } from './search/search.component';
+import { AdministrationComponent } from './administration/administration.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SearchComponent } from './search/search.component';
     WhoAreWeComponent,
     MajorMinorComponent,
     ApitestComponent,
-    SearchComponent
+    SearchComponent,
+    AdministrationComponent
   ],
   imports: [
     BrowserModule,
