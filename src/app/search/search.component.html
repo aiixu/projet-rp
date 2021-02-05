@@ -1,5 +1,6 @@
 <div class="container pb-5 pt-6">
-    <div class="field is-horizontal">
+    <p class="subtitle">Résultats de la recherche pour: <strong>{{ query }}</strong></p>
+    <!-- <div class="field is-horizontal">
         <div class="field-body">
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -9,15 +10,15 @@
                     <div class="field is-narrow">
                         <div class="control">
                             <div class="select is-fullwidth">
-                                <select>
+                                <select> 
                                     <option value="users">Utilisateurs</option>
                                 </select>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
-
+            
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Trier par</label>
@@ -35,13 +36,17 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <table class="table is-fullwidth mt-5">
+    <table *ngIf="users != undefined && users.length > 0" class="table is-fullwidth mt-5">
         <tr *ngFor="let user of users">
             <td>{{ user.username }}</td>
         </tr>
     </table>
+
+    <p *ngIf="users == undefined || users.length == 0"  class="subtitle is-danger">
+        Aucun utilisateur ne correspond à cette recherche
+    </p>
 
     <nav class="pagination is-centered pb-5 pt-5" role="navigation">
         <button class="pagination-previous" [disabled]="currentPageIndex == 1" (click)="gotoPage(previousPageIndex)">Page précédente</button>
