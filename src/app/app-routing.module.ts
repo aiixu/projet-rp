@@ -8,9 +8,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CreateRPComponent } from './create-rp/create-rp.component';
 import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
-import {MajorMinorComponent} from './major-minor/major-minor.component';
+import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
-import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { ViewProfileComponent} from './view-profile/view-profile.component'
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: "faq",
     component: FaqComponent
+  },
+  {
+    path: "administration",
+    component: AdministrationComponent
   },
   {
     path: "apitest",

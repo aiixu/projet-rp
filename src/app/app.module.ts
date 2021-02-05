@@ -15,7 +15,7 @@ import { WhoAreWeComponent } from './who-are-we/who-are-we.component';
 import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { FaqComponent } from './faq/faq.component';
-import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { AdministrationComponent } from './administration/administration.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     WhoAreWeComponent,
     MajorMinorComponent,
     ApitestComponent,
-    ViewProfileComponent
+    AdministrationComponent
   ],
   imports: [
     BrowserModule,
