@@ -1,0 +1,19 @@
+.AvecScroll{
+    overflow-y: scroll;
+}
+
+.ListeRP{
+    border-style: solid;
+}
+
+.ButtonModifier{
+    background-color: #205cbd;
+}
+
+.ButtonChangeImg{
+    background-color: #e1755e;
+}
+
+.ButtonDelete{
+    background-color: red;
+}
