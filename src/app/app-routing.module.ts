@@ -67,7 +67,11 @@ const routes: Routes = [
     path: "apitest",
     component: ApitestComponent
   },
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 485489e6a7fccf70f50037f233e2c7a68c19088a
   {
     path: "api",
     component: ApiComponent,
