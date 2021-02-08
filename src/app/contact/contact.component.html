@@ -7,18 +7,19 @@
                       <p>
                     
                         
-                        <p class=" box title is-size-1 title has-text-centered" >Contactez nous</p>
-                        <p class="subtitle is-size-3">
-                        </p>
+                        <p class=" box title is-size-1 title has-text-centered TitleColor" >Contactez nous</p>
+                        <p class="subtitle is-size-3"></p>
                 
-                           <div class="box subtitle is-size-3"> <br> <strong >Une question ? </strong>  <br>
-                            <br>Un petit mot doux ?<br> <br>
+                        <div class="box subtitle is-size-3"> <strong >Une question ? </strong> 
+                        <br>
+                        <br>
+                        <p class="subtitle is-size-3 TextColor"> Un petit mot doux ?</p>
                            
                 
-                        <p class="subtitle is-size-3">  Un conflit a regler ? </p><br>
+                        <p class="subtitle is-size-3 TextColor">  Un conflit a regler ? </p><br>
                         
                         
-                        <p class="subtitle is-size-3">Nous pouvons peut étre deja repondre  <a href="./faq" >ici (FaQs)</a> ;)</p> <br>
+                        <p class="subtitle is-size-3 TextColor">Nous pouvons peut étre deja repondre  <a href="./faq" >ici (FaQs)</a> ;)</p> <br>
                     </div>
                     </div>
                    
@@ -35,26 +36,26 @@
                 
                 <form #signupForm="ngForm" (ngSubmit)=" submitTickets(signupForm)" class="column is-one-third has-text-left">
                     <div class="field">
-                        <label class="label">Nom</label>
+                        <label class="label TextColor">Nom</label>
                         <div class="control">
                             <input ngModel name = "Name" class="input is-medium" type="text">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Email</label>
+                        <label class="label TextColor">Email</label>
                         <div class="control">
                             <input ngModel name= "Email" class="input is-medium" type="text">
                         </div>
                     </div>
                     <div class="field">
-                        <label class="label">Message</label>
+                        <label class="label TextColor">Message</label>
                         <div class="control">
                             <input ngModel name="textarea" type= "textarea" class="textarea is-medium">
                         </div>
                     </div>
                     <div class="control">
                       
-                        <button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium subtitle is-size-2">Envoyer le message</button>
+                        <button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium subtitle is-size-2 tg">Envoyer le message</button>
                     </div>
                 </form>
             </div>
