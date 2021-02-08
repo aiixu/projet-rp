@@ -18,12 +18,13 @@ import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
+import { MessagesComponent } from './messages/messages.component';
+import { PusherService } from './pusher.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    
     ProfileComponent,
     ContactComponent,
     FaqComponent,
@@ -38,7 +39,8 @@ import { SearchComponent } from './search/search.component';
     AdministrationComponent,
     ViewProfileComponent,
     SearchComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import { SearchComponent } from './search/search.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ PusherService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
