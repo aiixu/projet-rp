@@ -4,11 +4,7 @@
 
 export const environment = {
   production: false,
-  dburl: "http://35bc0de7dd7a.eu.ngrok.io/",
-  pusher: {
-    serverUrl: "http://a44868420b8d.eu.ngrok.io/",
-    key: "0174e9b38db54044ab61"
-  },
+  dburl: "http://a09491306bc9.eu.ngrok.io/",
   apiFolder: "api/"
 };
 
