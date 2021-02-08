@@ -16,6 +16,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { SearchComponent } from './search/search.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -38,13 +39,10 @@ const routes: Routes = [
     path: "connexion",
     component: ConnexionComponent
   },
-
-  
   {
     path: "view-profile",
     component: ViewProfileComponent
   },
-
   {
     path: "+18",
     component: MajorMinorComponent
@@ -68,6 +66,10 @@ const routes: Routes = [
   {
     path: "apitest",
     component: ApitestComponent
+  },
+  {
+    path: "messages",
+    component: MessagesComponent
   },
   {
     path: "api",
