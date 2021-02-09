@@ -5,7 +5,7 @@ import axios from "axios";
 export class GetTicketRequest
 {
     public async get(request: NonNullable<GetTicketRequestModel>): Promise<GetTicketResponseModel> {
-        const response: any = await axios.get(`${environment.dburl}api/users/${request.id}`);
+        const response: any = await axios.get(`${environment.apiUrl}tickets/${request.id}`);
         return plainToClass(GetTicketResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

@@ -5,7 +5,7 @@ import axios from "axios";
 export class GetTicketsRequest
 {
     public async get(request: NonNullable<GetTicketsRequestModel>): Promise<GetTicketsResponseModel> {        
-        const response: any = await axios.get(`${environment.dburl}api/users?p=${request.page}&q=${request.query}`);       
+        const response: any = await axios.get(`${environment.apiUrl}tickets?p=${request.page}&q=${request.query}`);       
         return plainToClass(GetTicketsResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

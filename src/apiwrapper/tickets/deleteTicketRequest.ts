@@ -5,7 +5,7 @@ import axios from "axios";
 export class DeleteTicketRequest
 {
     public async delete(request: NonNullable<DeleteTicketRequestModel>): Promise<DeleteTicketResponseModel> {
-        const response: any = await axios.delete(`${environment.dburl}api/tickets/${request.id}`);
+        const response: any = await axios.delete(`${environment.apiUrl}tickets/${request.id}`);
         return plainToClass(DeleteTicketResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

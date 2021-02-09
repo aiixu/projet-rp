@@ -5,7 +5,7 @@ import axios from "axios";
 export class DeleteUserRequest
 {
     public async delete(request: NonNullable<DeleteUserRequestModel>): Promise<DeleteUserResponseModel> {
-        const response: any = await axios.delete(`${environment.dburl}api/users/${request.id}`);
+        const response: any = await axios.delete(`${environment.apiUrl}users/${request.id}`);
         return plainToClass(DeleteUserResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

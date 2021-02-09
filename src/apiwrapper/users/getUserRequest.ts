@@ -5,7 +5,7 @@ import axios from "axios";
 export class GetUserRequest
 {
     public async get(request: NonNullable<GetUserRequestModel>): Promise<GetUserResponseModel> {
-        const response: any = await axios.get(`${environment.dburl}api/users/${request.id}`);
+        const response: any = await axios.get(`${environment.apiUrl}users/${request.id}`);
         return plainToClass(GetUserResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

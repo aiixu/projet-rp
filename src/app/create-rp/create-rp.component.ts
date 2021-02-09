@@ -12,4 +12,19 @@ export class CreateRPComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitTickets(form: NgForm) {    
+    const request: CreateRpRequest = new CreateRpRequest();
+    const requestModel : CreateRpRequestModel = new CreateRpRequestModel();
+    
+    requestModel.senderName = form.value.Name;
+    requestModel.senderMail = form.value.Email;
+    requestModel.message = form.value.textarea;
+
+    request.post(requestModel)
+      .then((res: any) => {
+        console.log(res);
+    });
+
+    form.reset();
+  }
 }

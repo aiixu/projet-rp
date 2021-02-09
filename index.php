@@ -6,7 +6,7 @@
     include "api/_users/getUserRequest.php";
     include "api/_users/updateUserRequest.php";
     include "api/_users/deleteUserRequest.php";
-
+    include "api/_rp/createRpRequest.php";
     include "api/_tickets/createTicketRequest.php";
     include "api/_tickets/getTicketsRequest.php";
     include "api/_tickets/getTicketRequest.php";
@@ -33,6 +33,17 @@
     }
     
     /// USERS
+
+    // auth 
+    Route::add("/api/users/auth", function()
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $body = json_decode(file_get_contents("php://input"));
+        echo json_encode(array("success" => true, "token" => md5($body->username . "_" . date("Y-m-s h:i:s"))));
+    }, "post");
 
     // create user
     Route::add("/api/users", function()
@@ -269,6 +280,42 @@
 
         // send request
         $request = new GetMessageRequest($db);
+        $request->get($request_model);
+    }, "get");
+
+    // RP
+
+    // create rp
+    Route::add("/api/users/([0-9]*)/rp", function($id)
+    {
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new CreateRpRequestModel();
+
+        $request_content = json_decode(file_get_contents("php://input"));
+
+        $request_model->user_id = $id;
+        $request_model->title = $request_content->title;  
+        $request_model->is_public = $request_content->is_public;
+        $request_model->content = $request_content->content;
+
+        // create and send request
+        $request = new CreateRpRequest($db);
+        $request->post($request_model);
+    }, "post");
+
+    // get rp
+    Route::add("/api/users/([a-z-0-9-A-Z-]*)/rp/([0-9]*)", function($username, $idRp)
+    {
+        $database = new Database();
+        $db = $database->getConnection();
+        
+        $request_model = new GetRpRequestModel();
+        $request_model->id = $idRp;
+
+        $request = new GetRpRequest($db);
         $request->get($request_model);
     }, "get");
 

@@ -13,7 +13,7 @@ export abstract class Request
     protected abstract execute<T extends ResponseModel>(cls: ClassConstructor<T>, request: NonNullable<RequestModel>) : Promise<T>;
 
     protected getApiUrl(): string {
-        return environment.dburl + environment.apiFolder + this.tableName;
+        return environment.apiUrl + this.tableName;
     }
 }
 

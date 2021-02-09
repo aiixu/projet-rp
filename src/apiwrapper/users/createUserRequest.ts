@@ -5,7 +5,7 @@ import axios from "axios";
 export class CreateUserRequest
 {
     public async post(request: NonNullable<CreateUserRequestModel>): Promise<CreateUserResponseModel> {
-        const response: any = await axios.post(`${environment.dburl}api/users`, classToPlain(request));
+        const response: any = await axios.post(`${environment.apiUrl}users`, classToPlain(request));
         return plainToClass(CreateUserResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }
