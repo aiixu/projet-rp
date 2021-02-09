@@ -4,11 +4,12 @@
     <div class="hero-body">(image qui zoom)</div>
 </section>
 
-<form action="" #titleForm="ngForm" (ngSubmit)="getRp(titleForm)">
 
 <div class ="box BoxColor3">
     <div class="content">
-       <p name = "title content"></p>
+       <p name = "title content ">  {{response.title}}</p>
+       <p> {{response.content}}</p >
+        <p>{{response.date}}</p>
       </div>
     
 </div>
@@ -21,5 +22,3 @@
 
 
 
-
-</form>
