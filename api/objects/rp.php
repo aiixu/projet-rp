@@ -97,7 +97,7 @@
                       `title`     = '$this->title',
                       `content`   = '$this->content',
                       `date`      = '$this->date'";
-
+        echo $query;
           // prepare query
           $stmt = $this->conn->prepare($query);
           

@@ -13,17 +13,17 @@
 
         public function get($request)
         {
-            $user = new Rp($this->db);    
-            $user->id = $request->id;
+            $rp = new Rp($this->db);    
+            $rp->id = $request->id;
             
             $response = new UpdateRpResponseModel();
 
-            if(isset($request->user_id)) { $user->user_id = $request->user_id; }
-            if(isset($request->is_public)) { $user->is_public = $request->is_public; }
-            if(isset($request->content)) { $user->content = $request->content; }
-            if(isset($request->title)) { $user->title = $request->title; }
+            if(isset($request->user_id)) { $rp->user_id = $request->user_id; }
+            if(isset($request->is_public)) { $rp->is_public = $request->is_public; }
+            if(isset($request->content)) { $rp->content = $request->content; }
+            if(isset($request->title)) { $rp->title = $request->title; }
 
-            if($user->update())
+            if($rp->update())
             {
                 $response->code = 200; // Ok
                 $response->content = array("message" => "Rp updated.");
@@ -45,8 +45,6 @@
         public $is_public;
         public $title;
         public $content;
-        // public $first_name;
-        // public $last_name;
     }
 
     // Response

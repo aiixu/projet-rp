@@ -41,7 +41,7 @@
         </div>
     </div> -->
 
-    <table *ngIf="users != undefined && users.length > 0" class="table is-fullwidth mt-5">
+    <table *ngIf="users != undefined && users.length > 0" class="table is-fullwidth mt-5 is-bordered is-striped is-narrow is-hoverable">
         <tr *ngFor="let user of users" [routerLink]="'/users/' + user.username" routerLinkActive="true">
             <td>
                 <figure class="image is-32x32">
