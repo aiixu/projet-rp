@@ -4,20 +4,20 @@
     <div class="hero-body">(image qui zoom)</div>
 </section>
 
-
-<div class ="box BoxColor3">
-    <div class="content">
-       <p name = "title content ">  {{response.title}}</p>
-       <p> {{response.content}}</p >
-        <p>{{response.date}}</p>
-      </div>
+<div class="container" *ngIf="response">
+    <div class="box BoxColor3">
+        <div class="content">
+            <p name = "title content ">  {{ response.title }}</p>
+            <p> {{ response.content }}</p >
+            <p>{{ response.date }}</p>
+        </div>
+    </div>
     
+    <div class="buttons buttons is-centered">
+        <button  type="submit"  class=" button is-primary  button is-link is-rounded button is-large ButtonColor2">modifier</button>
+        <button  type="submit"  class=" button is-primary  button is-link is-rounded button is-large ButtonColor2">supprimer</button>
+    </div>    
 </div>
-<div class="buttons buttons is-centered">
-    <button  type="submit"  class=" button is-primary  button is-link is-rounded button is-large ButtonColor2">modifier</button>
-    <button  type="submit"  class=" button is-primary  button is-link is-rounded button is-large ButtonColor2">supprimer</button>
-</div>
-
 
 
 

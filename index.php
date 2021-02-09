@@ -6,7 +6,13 @@
     include "api/_users/getUserRequest.php";
     include "api/_users/updateUserRequest.php";
     include "api/_users/deleteUserRequest.php";
+
     include "api/_rp/createRpRequest.php";
+    include "api/_rp/updateRpRequest.php";
+    include "api/_rp/getRpRequest.php";
+    include "api/_rp/getRpsRequest.php";
+    include "api/_rp/deleteRpRequest.php";
+
     include "api/_tickets/createTicketRequest.php";
     include "api/_tickets/getTicketsRequest.php";
     include "api/_tickets/getTicketRequest.php";
@@ -313,7 +319,7 @@
         $db = $database->getConnection();
         
         $request_model = new GetRpRequestModel();
-        $request_model->id = $idRp;
+        $request_model->id = $id;
 
         $request = new GetRpRequest($db);
         $request->get($request_model);

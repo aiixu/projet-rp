@@ -24,7 +24,7 @@
                 $response->user_id = $rp->user_id;
                 $response->is_public = $rp->is_public;
                 $response->content = $rp->content;
-                $response->title = $request->title;
+                $response->title = $rp->title;
 
                 $response->code = 200; //Ok
                 $response->content = $response->getObject();

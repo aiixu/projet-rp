@@ -16,8 +16,8 @@
     <div class="column box  BoxColor2">
       <div class = "">
       
-        <figure class=" image is-128x128 is-pulled-left">
-          <img class="is-rounded" src="assets/imageDs.jpg">
+        <figure class="image is-64x64 is-pulled-left">
+          <img class="is-rounded" [src]="'https://cscfontaine.centres-sociaux.fr/files/2019/10/user-icon-image-placeholder-300-grey.jpg'" [alt]="'Photo de profile de ' + user.username">
         </figure>
         
         <br><br>
@@ -50,5 +50,8 @@
     </div>
   </div>
 </div>
- 
-   
+
+<div class="container p-5" *ngIf="!user">
+  <p class="title"><strong>404 - Page introuvable</strong></p>
+  <p class="subtitle">Cet utilisateur n'existe pas</p>
+</div>

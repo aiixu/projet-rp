@@ -24,15 +24,15 @@
         {
           // query to get the rp
           $query = "SELECT
-                      'user_id',
-                      'is_public',
-                      'content',
-                      'title'
-                    From
-                      '$this->table_name'
+                      `user_id`,
+                      `is_public`,
+                      `content`,
+                      `title`
+                    FROM
+                      $this->table_name
                     WHERE
-                      'id' = '$this->id'";
-
+                      `id` = $this->id";
+                      
           // prepare query statement
           $stmt = $this->conn->prepare($query);
 
