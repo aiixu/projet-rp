@@ -286,7 +286,7 @@
     // RP
 
     // create rp
-    Route::add("/api/users/([0-9]*)/rps", function($id)
+    Route::add("/api/rps", function($id)
     {
         $database = new Database();
         $db = $database->getConnection();
@@ -296,7 +296,7 @@
 
         $request_content = json_decode(file_get_contents("php://input"));
 
-        $request_model->user_id = $id;
+        $request_model->user_id = $request_content->user_id;
         $request_model->title = $request_content->title;  
         $request_model->is_public = $request_content->is_public;
         $request_model->content = $request_content->content;
