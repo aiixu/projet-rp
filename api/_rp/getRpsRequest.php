@@ -47,12 +47,14 @@
 
                     $response_rp = new GetRpsRpResponseModel();
 
+                    $response_rp->id = $id;
+                    $response_rp->user_id = $user_id;
                     $response_rp->is_public = $is_public;
                     $response_rp->content = $content;
                     $response_rp->title = $title;
                     $response_rp->date = $date;
 
-                    array_push($response->rp, $response_rp->getObject());
+                    array_push($response->rps, $response_rp->getObject());
                 }
     
                 // include paging
@@ -71,7 +73,7 @@
             else
             {
                 $response->_code = 404; // Not Found
-                $response->_content = array("message" => "No rps found.");
+                $response->content = array("message" => "No rps found.");
             }
 
             return $response->emit();
@@ -95,6 +97,8 @@
     // Response
     class GetRpsRpResponseModel extends ResponseModel
     {
+        public $id;
+        public $user_id;
         public $is_public;
         public $content;
         public $title;

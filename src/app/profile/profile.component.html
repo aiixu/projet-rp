@@ -1,42 +1,26 @@
-<div class="container" style="margin-top: -100px;">
+<div class="container">
   <section class="section is-medium">
     <div class="box ButtonColor2">
-      <div class="title is-centered" style="color: white;">Ma liste de RP :</div>
-      <div class="box AvecScroll" style="height: 150px">
-        <div class="box ListeRP">
-          <a href="">(Nom du RP) - (date)</a>
-          <div class="has-text-right">
-            <a class="button is-small has-text-centered" style="background-color: blue; color: #ffffff;">Modifier</a>
-            <a class="button is-small" style="background-color: red; color: white;">Supprimer</a>
+      <div *ngIf="rps != undefined && rps.length != 0">
+        <div class="title is-centered" style="color: white;">Ma liste de RP :</div>
+        <div class="box AvecScroll" style="height: 150px">
+          <div class="box ListeRP" *ngFor="let rp of rps">
+            <a href="">{{ rp.title }} - {{ rp.date }}</a>
+            <div class="has-text-right">
+              <a class="button is-small has-text-centered" style="background-color: blue; color: #ffffff;">Modifier</a>
+              <a class="button is-small" (click)="deleteRp(rp.id, rps.indexOf(rp))" style="background-color: red; color: white;">Supprimer</a>
+            </div>
           </div>
         </div>
-        <div class="box ListeRP">
-          <a href="">La loutre de Bamako - 08/02/2021</a>
-          <div class="has-text-right">
-            <a class="button is-small has-text-centered" style="background-color: blue; color: #ffffff;">Modifier</a>
-            <a class="button is-small" style="background-color: red; color: white;">Supprimer</a>
-          </div>
-        </div>
-        <div class="box ListeRP">
-          <a href="">Le singe qui murmura à l'oreille des singes - 04/12/2020</a>
-          <div class="has-text-right">
-            <a class="button is-small has-text-centered" style="background-color: blue; color: #ffffff;">Modifier</a>
-            <a class="button is-small" style="background-color: red; color: white;">Supprimer</a>
-          </div>
-        </div>
-        <div class="box ListeRP">
-          <a href="">Le roi des bites - 21/01/2021</a>
-          <div class="has-text-right">
-            <a class="button is-small has-text-centered" style="background-color: blue; color: #ffffff;">Modifier</a>
-            <a class="button is-small" style="background-color: red; color: white;">Supprimer</a>
-          </div>
-        </div> 
+      </div>
+      <div *ngIf="rps == undefined || rps.length == 0">
+        <a class="button is-light" href="/create-rp">Créer un rp</a>
       </div>
     </div>
   </section>
 </div>
 
-<div class="container" style="margin-top: -200px;">
+<div class="container">
   <section class="section is-medium">
     <div class="box BoxColor3">
 

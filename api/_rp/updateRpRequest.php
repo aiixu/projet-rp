@@ -45,6 +45,7 @@
         public $is_public;
         public $title;
         public $content;
+        public $date;
     }
 
     // Response

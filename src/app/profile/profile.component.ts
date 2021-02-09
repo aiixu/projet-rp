@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteRpRequest';
+import { GetRpsRequest, GetRpsRequestModel, GetRpsResponseRpModel } from 'src/apiwrapper/rp/getRpsRequest';
 
 @Component({
   selector: 'app-profile',
@@ -8,29 +8,37 @@ import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteR
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  loading: boolean;
+  rps: Array<GetRpsResponseRpModel>;
 
   constructor() { }
 
   ngOnInit(): void {
+    const request: GetRpsRequest = new GetRpsRequest();
+    const requestModel: GetRpsRequestModel = new GetRpsRequestModel();
+
+    requestModel.userId = 50;
+
+    this.loading = true;
+    request.get(requestModel)
+      .then(res => {
+        this.rps = res.rps;
+      })
+      .catch(console.error)
+      .then(() => this.loading = false);
   }
   
-  createRp(form: NgForm) {    
+  deleteRp(id: number, index: number) {    
     const request: DeleteRpRequest = new DeleteRpRequest();
-    const requestModel : DeleteRpRequestModel = new DeleteRpRequestModel(7);
+    const requestModel : DeleteRpRequestModel = new DeleteRpRequestModel(id);
     
-    requestModel.user_id = 7;
-    requestModel. = form.value.title;
-    requestModel.content = form.value.textRp;
-    requestModel.is_public = form.value.isPublic;
-    console.log(DeleteRpRequest);
-
-    request.post(requestModel)
-      .then((res: any) => {
-        console.log(res);
+    request.delete(requestModel)
+      .then(res => {
+        if(res.success)
+        {
+          this.rps.splice(index, 1);
+        }
       })
       .catch(console.error);
-
-    form.reset();
   }
-
 }

@@ -147,10 +147,12 @@
 
           // select all query
           $query = "SELECT
+                      `id`,
                       `user_id`,
                       `is_public`,
                       `content`,
-                      `title`
+                      `title`,
+                      `date`
                     FROM
                       `$this->table_name`
                     WHERE
