@@ -15,12 +15,7 @@ export class ApitestComponent implements OnInit {
   constructor() { }
 
   async ngOnInit(): Promise<void> {
-    const request: CreateTicketRequest = new CreateTicketRequest();
-    const requestModel: CreateTicketRequestModel = new CreateTicketRequestModel("sender@gmail.com", "sender", "salut");
-
-    await request.post(requestModel)
-      .then(console.log)
-      .catch(console.error);
+    
   }
 
   testCreateUsers() {

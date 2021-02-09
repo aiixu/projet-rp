@@ -58,7 +58,7 @@
                 $page_url = $home_url . "tickets?";
                 if($request->query !== "")
                 {
-                    $page_url .= "q=$request->query&";
+                    $page_url .= "query=$request->query&";
                 }
 
                 $paging = Utilities::getPaging($request->page, $count, $records_per_page, $page_url);

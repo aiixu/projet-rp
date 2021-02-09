@@ -31,7 +31,7 @@
             }
             else
             {
-                $response->code = 404; //Service unavailable
+                $response->code = 404; // Not found
                 $response->content = array("message" => "The RP does not exist.");
             }
 
