@@ -1,5 +1,6 @@
 <?php
     include_once "api/shared/responseModel.php";
+    include_once "api/objects/rp.php";
 
     class GetRpRequest
     {
@@ -18,23 +19,38 @@
             
             $response = new GetRpResponseModel();
 
-            if(isset($rp->creator_rp))
+            if(isset($rp->user_id))
             {
-                $response->creator_rp = $rp->creator_rp;
-                $response->creator_name = $rp->crator_name;
-                $response->creator_date = $rp->creator_date;
-                $response->creator_
+                $response->user_id = $rp->user_id;
+                $response->is_public = $rp->is_public;
+                $response->content = $rp->content;
+                $response->title = $request->title;
+
+                $response->code = 200; //Ok
+                $response->content = $response->getObject();
             }
+            else
+            {
+                $response->code = 404; //Service unavailable
+                $response->content = array("message" => "The RP does not exist.");
+            }
+
+            return $response->emit();
         }
     }
 
+    // Request
     class GetRpRequestModel
     {
-
+        public $id;
     }
 
+    // Response
     class GetRpResponseModel extends ResponseModel
     {
-        
+        public $user_id;
+        public $is_public;
+        public $content;
+        public $title;
     }
 ?>
