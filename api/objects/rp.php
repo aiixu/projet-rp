@@ -55,6 +55,29 @@
           
         }
 
+        // get all Rps
+        function getAll()
+        {
+          // query to select all Rps and order y their date
+          $query = "SELECT
+                      `id`,
+                      `user_id`,
+                      `is_public`,
+                      `content`,
+                      `title`
+                    FROM
+                      `$this->table_name`
+                    ORDER BY
+                      `date` ASC";
+          // prepare query statement
+          $stmt = $this->conn->prepare($query);
+          
+          // execute query
+          $stmt->execute();
+
+          return $stmt;
+        }
+        // create Rp
         function create()
         {
           // sanitize
@@ -89,7 +112,7 @@
           return false;
         }
 
-        // delete user
+        // delete Rp
         function delete()
         {
           // sanitize
@@ -112,6 +135,65 @@
           }
 
           return false;
+        }
+
+        // search products
+        function search($keywords, $from_record_num, $records_per_page)
+        {
+          //sanitize
+          $keywords = htmlspecialchars(strip_tags($keywords));
+          $keywords = "%{$keywords}%";
+
+          // select all query
+          $query = "SELECT
+                      `user_id`,
+                      `is_public`,
+                      `content`,
+                      `title`
+                    FROM
+                      `$this->table_name`
+                    WHERE
+                      `user_id` LIKE '$keywords' OR
+                      `is_public` LIKE '$keywords'
+                    ORDER BY
+                      `date` ASC
+                    LIMIT ?, ?";
+
+          // prepare query statement
+          $stmt = $this->conn->prepare($query);
+
+          // bind variable values
+          $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
+          $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
+
+          // execute query
+          $stmt->execute();
+
+          return $stmt;
+        }
+
+        public function searchCount($keywords)
+        {
+          // sanitize
+          $keywords = htmlspecialchars(strip_tags($keywords));
+          $keywords = "%{$keywords}%";
+
+          // select all query
+          $query = "SELECT
+                      `user_id`,
+                      `is_public`,
+                      `content`,
+                      `title`
+                    FROM
+                      `$this->table_name`
+                    WHERE
+                      `user_id` LIKE '$keywords' OR
+                      `is_public` LIKE '$keywords'";
+
+          $stmt = $this->conn->prepare($query);
+          $stmt->execute();
+
+          return $stmt->rowCount();
         }
     }
 ?>
