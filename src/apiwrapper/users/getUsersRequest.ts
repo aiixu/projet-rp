@@ -5,7 +5,7 @@ import axios from "axios";
 export class GetUsersRequest
 {
     public async get(request: NonNullable<GetUsersRequestModel>): Promise<GetUsersResponseModel> {        
-        const response: any = await axios.get(`${environment.apiUrl}users?p=${request.page}&q=${request.query}`);       
+        const response: any = await axios.get(`${environment.apiUrl}users?page=${request.page}&query=${request.query}`);       
         return plainToClass(GetUsersResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

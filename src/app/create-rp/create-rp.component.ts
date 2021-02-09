@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { CreateRpRequest, CreateRpRequestModel } from 'src/apiwrapper/rp/createRpRequest';
 
 @Component({
   selector: 'app-create-rp',
@@ -12,18 +14,20 @@ export class CreateRPComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submitTickets(form: NgForm) {    
+  createRp(form: NgForm) {    
     const request: CreateRpRequest = new CreateRpRequest();
     const requestModel : CreateRpRequestModel = new CreateRpRequestModel();
     
-    requestModel.senderName = form.value.Name;
-    requestModel.senderMail = form.value.Email;
-    requestModel.message = form.value.textarea;
-
+    requestModel.userId = 50;
+    requestModel.title = form.value.title;
+    requestModel.content = form.value.textRp;
+    requestModel.isPublic = true;
+    
     request.post(requestModel)
       .then((res: any) => {
         console.log(res);
-    });
+      })
+      .catch(console.error);
 
     form.reset();
   }

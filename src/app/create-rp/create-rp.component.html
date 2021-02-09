@@ -2,24 +2,29 @@
     <div class="hero-body">(image qui zoom)</div>
 </section>
 
-<h1 class="TittleRP">Créez ton RP</h1>
+<form #titleForm="ngForm" (ngSubmit)="createRp(titleForm)">
+  <label class="checkbox">
+    <input name="isPublic" ngModel type="checkbox">
+    Voulez vous que votre histoire sois visible par tous (ou qu'elle reste privée)
+  </label>
 
-<div class="content-wrapper">    
-    <div>Décrit l'univers de ton RP :</div>
-    <form>
-        <textarea style="overflow:auto" rows=5 cols=150></textarea>
-    </form>
-    <div>Écrit ton histoire :</div>
-    <form>
-        <textarea style="overflow:auto" rows=10 cols=150></textarea>
-    </form>
+  <h1 class="TittleRP">Créez ton RP</h1>
 
-    <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-link">Publier</button>
-        </div>
-    </div>
+  <div class="content-wrapper">    
+      <input type="text" ngModel name="title" style="overflow:auto" rows=5 cols=150>
 
+      <p class="subtitle">Décrit l'univers de ton RP :</p>
+      <textarea ngModel name="textRp" style="overflow:auto" rows=5 cols=150></textarea>
+
+      <p class="subtitle">Écrit ton histoire :</p>
+      <textarea ngModel name="textRp" style="overflow:auto" rows=10 cols=150></textarea>
+  </div>
+
+  
+</form>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button  type="submit"  class="button is-link">Publier</button>
+  </div>
 </div>
-<!---#contactForm="ngForm" (ngSubmit)=" submitTickets(contactForm)" >
-<!-- pimp my commentaire -->

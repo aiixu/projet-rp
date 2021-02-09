@@ -82,14 +82,14 @@
         $request_model->page = 1;
         $request_model->query = "";
 
-        if(isset($_GET["p"]))
+        if(isset($_GET["page"]))
         {
-            $request_model->page = $_GET["p"];
+            $request_model->page = $_GET["page"];
         }
 
-        if(isset($_GET["q"]))
+        if(isset($_GET["query"]))
         {
-            $request_model->query = $_GET["q"];
+            $request_model->query = $_GET["query"];
         }
 
         // create and send request
@@ -184,14 +184,14 @@
         $request_model->page = 1;
         $request_model->query = "";
 
-        if(isset($_GET["p"]))
+        if(isset($_GET["page"]))
         {
-            $request_model->page = $_GET["p"];
+            $request_model->page = $_GET["page"];
         }
 
-        if(isset($_GET["q"]))
+        if(isset($_GET["query"]))
         {
-            $request_model->query = $_GET["q"];
+            $request_model->query = $_GET["query"];
         }
 
         // create and send request
@@ -286,7 +286,7 @@
     // RP
 
     // create rp
-    Route::add("/api/users/([0-9]*)/rp", function($id)
+    Route::add("/api/users/([0-9]*)/rps", function($id)
     {
         $database = new Database();
         $db = $database->getConnection();
@@ -307,7 +307,7 @@
     }, "post");
 
     // get rp
-    Route::add("/api/users/([a-z-0-9-A-Z-]*)/rp/([0-9]*)", function($username, $idRp)
+    Route::add("/api/users/([a-z-0-9-A-Z-]*)/rps/([0-9]*)", function($username, $idRp)
     {
         $database = new Database();
         $db = $database->getConnection();
@@ -318,6 +318,56 @@
         $request = new GetRpRequest($db);
         $request->get($request_model);
     }, "get");
+
+    // get rps
+    Route::add("/api/rps", function()
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        $request_model = new GetRpsRequestModel();
+        $request_model->page = 1;
+        $request_model->query = "";
+        $request_model->user_id = -1;
+
+        if(isset($_GET["page"]))
+        {
+            $request_model->page = $_GET["page"];
+        }
+
+        if(isset($_GET["query"]))
+        {
+            $request_model->query = $_GET["query"];
+        }
+
+        if(isset($_GET["user"]))
+        {
+            $request_model->user_id = $_GET["user"];
+        }
+
+        // create and send request
+        $request = new GetRpsRequest($db);
+        $request->get($request_model);
+    }, "get");
+
+    // update rp
+
+    // delete rp
+    Route::add("/api/rps/([0-9]*)",  function($idRp)
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new DeleteRpRequestModel();
+        $request_model->id = $idRp;
+
+        // send request
+        $request = new DeleteRpRequest($db);
+        $request->delete($request_model); 
+    }, "delete");
 
     Route::run("/");
 ?>
