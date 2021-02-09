@@ -88,5 +88,30 @@
           
           return false;
         }
+
+        // delete user
+        function delete()
+        {
+          // sanitize
+          $this->id = htmlspecialchars(strip_tags($this->id));
+
+          // delete query
+          $query = "DELETE
+                    FROM
+                      `$this->table_name`
+                    WHERE
+                      `id` = $this->id";
+
+          // prepare query
+          $stmt = $this->db->prepare($query);
+
+          // execute query
+          if($stmt->execute())
+          {
+            return true;
+          }
+
+          return false;
+        }
     }
 ?>
