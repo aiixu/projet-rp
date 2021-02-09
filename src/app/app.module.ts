@@ -18,6 +18,7 @@ import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SearchComponent } from './search/search.component';
     ViewProfileComponent,
     SearchComponent,
     AdministrationComponent,
+    PublicProfileComponent,
   ],
   imports: [
     BrowserModule,

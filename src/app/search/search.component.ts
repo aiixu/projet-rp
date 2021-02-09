@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Stopwatch } from "ts-stopwatch";
 import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseUserModel } from 'src/apiwrapper/users/getUsersRequest';
 
 @Component({
@@ -17,7 +17,8 @@ export class SearchComponent implements OnInit
   lastPageIndex: number = 1;
 
   users: Array<GetUsersResponseUserModel>;
-
+  time: string;
+  
   params: any;
   query: string;
 
@@ -36,10 +37,16 @@ export class SearchComponent implements OnInit
   }
 
   search(filter: string, query: string, page: number): void {
+    const stopwatch = new Stopwatch();
+    stopwatch.start();
+
     switch(filter)
     {
       case "users":
       default:
+        this.users = [];
+        this.time = "";
+
         const request: GetUsersRequest = new GetUsersRequest();
         const requestModel: GetUsersRequestModel = new GetUsersRequestModel(query, page);
 
@@ -53,7 +60,11 @@ export class SearchComponent implements OnInit
 
             this.lastPageIndex = res.pages.pages.length;        
           })
-          .catch(console.error);
+          .catch(console.error)
+          .then(_ => {
+            stopwatch.stop();
+            this.time = stopwatch.getTime() + "ms";
+          });
         
         break;
     }

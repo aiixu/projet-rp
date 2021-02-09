@@ -1,5 +1,6 @@
 <div class="container pb-5 pt-6">
     <p class="subtitle">Résultats de la recherche pour: <strong>{{ query }}</strong></p>
+    <p class="subtitle is-6">Completed in {{ time }}</p>
     <!-- <div class="field is-horizontal">
         <div class="field-body">
             <div class="field is-horizontal">
@@ -39,7 +40,7 @@
     </div> -->
 
     <table *ngIf="users != undefined && users.length > 0" class="table is-fullwidth mt-5">
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of users" [routerLink]="'/users/' + user.username" routerLinkActive="true">
             <td>{{ user.username }}</td>
         </tr>
     </table>

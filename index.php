@@ -112,7 +112,7 @@
         $request->get($request_model);
     }, "get");
 
-    // get specific user
+    // update specific user
     Route::add("/api/users/([0-9]*)", function($id) 
     {
         // connect to db
