@@ -13,7 +13,7 @@ export class ViewRpComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get("id");
 
     const request: GetRpRequest = new GetRpRequest();
     // on créé un objet qui est le contenu de la requête

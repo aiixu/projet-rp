@@ -14,26 +14,38 @@
   </div>
   <div class="columns is-mobile">
     <div class="column box  BoxColor2">
-      <div class = "">
-      
-        <figure class="image is-64x64 is-pulled-left">
-          <img class="is-rounded" [src]="'https://cscfontaine.centres-sociaux.fr/files/2019/10/user-icon-image-placeholder-300-grey.jpg'" [alt]="'Photo de profile de ' + user.username">
-        </figure>
-        
-        <br><br>
+      <div>
+        <ul>
+          <div style="display: inline-block;">
+            <figure class="image is-64x64 is-pulled-left">
+              <img class="is-rounded" [src]="'https://cscfontaine.centres-sociaux.fr/files/2019/10/user-icon-image-placeholder-300-grey.jpg'" [alt]="'Photo de profile de ' + user.username">
+            </figure>
+          </div>
 
-        <h1 class= "TitleColor subtitle is-size-3 ">{{ user.username }}</h1>
-        <div class="box BoxColor3 ">
+          <div class="pl-4" style="display: inline-block;vertical-align: 10px;">
+            <span class= "TitleColor subtitle is-size-3 ">{{ user.username }}</span> <br/>
+            <span *ngIf="user.isPublic == true" class="TitleColor subtitle is-size-6 ">{{ user.firstName }} {{ user.lastName }}</span>
+          </div>
+        </ul>
+
+        <div *ngIf="user.isPublic == true" class="box BoxColor3 ">
           <ul class="subtitle is-size-4 has-text-centered  "> 
             <li>compte crée le 11/11/2020</li>
             <li>derniere publications le 12/11/2020</li>
             <li>nombre de rp : 2</li>
           </ul> 
         </div>
+
+        <div *ngIf="user.isPublic == false" class="p-5">
+          <p class="subtitle is-5">
+            <i class="fa fa-lock"></i> Cet utilisateur est en privé
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="column">
+
+  <div *ngIf="user.isPublic == true" class="column">
     <p class="TitleColor subtitle is-size-3 has-text-centered">Contacter "pseudo de la personne"</p>
     <div class="field">
       <div class="field BoxColor3 box">
