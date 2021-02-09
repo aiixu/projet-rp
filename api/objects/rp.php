@@ -18,7 +18,43 @@
         {
           $this->conn = $db;
         }
-    
+        
+        // get specific rp
+        function getOne()
+        {
+          // query to get the rp
+          $query = "SELECT
+                      'user_id',
+                      'is_public',
+                      'content',
+                      'title'
+                    From
+                      '$this->table_name'
+                    WHERE
+                      'id' = '$this->id'";
+
+          // prepare query statement
+          $stmt = $this->db->prepare($query);
+
+          // execute query
+          $stmt->execute();
+
+          // get retrieved row
+          $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+          if($stmt->rowCount() == 0)
+          {
+            return;
+          }
+          
+          // set values to object properties
+          $this->user_id = $row["user_id"];
+          $this->is_public = $row["is_public"];
+          $this->content = $row["content"];
+          $this->title = $row["title"];
+          
+        }
+
         function create()
         {
           // sanitize
