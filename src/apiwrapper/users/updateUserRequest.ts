@@ -5,7 +5,7 @@ import axios from "axios";
 export class UpdateUserRequest
 {
     public async put(request: NonNullable<UpdateUserRequestModel>): Promise<UpdateUserResponseModel> {
-        const response: any = await axios.put(`${environment.dburl}api/users/${request.id}`, classToPlain(request));
+        const response: any = await axios.put(`${environment.apiUrl}users/${request.id}`, classToPlain(request));
         return plainToClass(UpdateUserResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

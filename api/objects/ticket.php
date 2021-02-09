@@ -41,7 +41,7 @@
           // get retrieved row
           $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-          if(!isset($row["sender_name"]))
+          if($stmt->rowCount() == 0)
           {
             return;
           }
