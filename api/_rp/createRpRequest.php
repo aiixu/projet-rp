@@ -35,14 +35,14 @@
             {
                 $response->id = $rp->id;
 
-                $response->code = 201; // Created
-                $response->content = $response->getObject();
+                $response->_code = 201; // Created
+                $response->_content = $response->getObject();
             }
             // if unable to create the rp, tell the user
             else
             {
-                $response->code = 503; // Service unavailable
-                $response->content = array("message" => "Unable to create rp.");
+                $response->_code = 503; // Service unavailable
+                $response->_content = array("message" => "Unable to create rp.");
             }
 
             return $response->emit();

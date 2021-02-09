@@ -31,13 +31,13 @@
                     $response->last_name = $user->last_name;
                 }
             
-                $response->code = 200; // Ok
-                $response->content = $response->getObject();
+                $response->_code = 200; // Ok
+                $response->_content = $response->getObject();
             }
             else
             {
-                $response->code = 404; // Service unavailable
-                $response->content = array("message" => "User does not exist.");
+                $response->_code = 404; // Service unavailable
+                $response->_content = array("message" => "User does not exist.");
             }
             
             return $response->emit();

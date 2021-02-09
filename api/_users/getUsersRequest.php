@@ -70,13 +70,13 @@
                 $paging = Utilities::getPaging($request->page, $count, $records_per_page, $page_url);
                 
                 $response->pages = $paging;
-                $response->code = 200; // Ok
-                $response->content = $response->getObject();
+                $response->_code = 200; // Ok
+                $response->_content = $response->getObject();
             }
             else
             {
-                $response->code = 404; // Not Found
-                $response->content = array("message" => "No users found.");
+                $response->_code = 404; // Not Found
+                $response->_content = array("message" => "No users found.");
             }
 
             return $response->emit();

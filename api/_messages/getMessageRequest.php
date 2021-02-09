@@ -25,13 +25,13 @@
                 $response->text        = $message->text;
                 $response->date        = $message->date;
 
-                $response->code = 200; // Ok
-                $response->content = $response->getObject();
+                $response->_code = 200; // Ok
+                $response->_content = $response->getObject();
             }
             else
             {
-                $response->code = 404; // Not found
-                $response->content = array("message" => "Message doesn't exists.");
+                $response->_code = 404; // Not found
+                $response->_content = array("message" => "Message doesn't exists.");
             }
 
             return $response->emit();

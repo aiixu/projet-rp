@@ -23,16 +23,17 @@
             {
                 $response->user_id = $rp->user_id;
                 $response->is_public = $rp->is_public;
-                $response->content = $rp->content;
+                $response->content = htmlspecialchars_decode($rp->content);
                 $response->title = $rp->title;
+                $response->date = $rp->date;
 
-                $response->code = 200; //Ok
-                $response->content = $response->getObject();
+                $response->_code = 200; //Ok
+                $response->_content = $response->getObject();
             }
             else
             {
-                $response->code = 404; // Not found
-                $response->content = array("message" => "The RP does not exist.");
+                $response->_code = 404; // Not found
+                $response->_content = array("message" => "The RP does not exist.");
             }
 
             return $response->emit();
@@ -52,5 +53,6 @@
         public $is_public;
         public $content;
         public $title;
+        public $date;
     }
 ?>

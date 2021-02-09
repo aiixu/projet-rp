@@ -25,13 +25,13 @@
 
             if($rp->update())
             {
-                $response->code = 200; // Ok
-                $response->content = array("message" => "Rp updated.");
+                $response->_code = 200; // Ok
+                $response->_content = array("message" => "Rp updated.");
             }
             else
             {
-                $response->code = 404; // Service unavailable
-                $response->content = array("message" => "Rp does not exist.");
+                $response->_code = 404; // Service unavailable
+                $response->_content = array("message" => "Rp does not exist.");
             }
             
             return $response->emit();

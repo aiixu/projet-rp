@@ -27,7 +27,8 @@
                       `user_id`,
                       `is_public`,
                       `content`,
-                      `title`
+                      `title`,
+                      `date`
                     FROM
                       $this->table_name
                     WHERE
@@ -52,7 +53,7 @@
           $this->is_public = $row["is_public"];
           $this->content = $row["content"];
           $this->title = $row["title"];
-          
+          $this->date = $row["date"];
         }
 
         // get all Rps
@@ -83,8 +84,8 @@
           // sanitize
           $this->user_id = htmlspecialchars(strip_tags($this->user_id));
           $this->is_public = htmlspecialchars(strip_tags($this->is_public));
-          $this->title = htmlspecialchars(strip_tags($this->title));
-          $this->content = htmlspecialchars(strip_tags($this->content));
+          $this->title = addslashes(htmlspecialchars(strip_tags($this->title)));
+          $this->content = addslashes(htmlspecialchars(strip_tags($this->content)));
           $this->date = date("Y-m-d H:i:s"); // 2021-02-08 15:05:54
           
           // query to insert user
@@ -97,7 +98,7 @@
                       `title`     = '$this->title',
                       `content`   = '$this->content',
                       `date`      = '$this->date'";
-        echo $query;
+
           // prepare query
           $stmt = $this->conn->prepare($query);
           

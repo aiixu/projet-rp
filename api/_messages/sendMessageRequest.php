@@ -35,14 +35,14 @@
                 // success
                 $response->id = $message->id;
 
-                $response->code = 201; // created
-                $response->content = $response->getObject();
+                $response->_code = 201; // created
+                $response->_content = $response->getObject();
             }
             else
             {
                 // fail
-                $response->code = 503; // service unavailable
-                $response->content = array("message" => "Unable to send the message.");
+                $response->_code = 503; // service unavailable
+                $response->_content = array("message" => "Unable to send the message.");
             }
 
             return $response->emit();

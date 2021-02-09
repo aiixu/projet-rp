@@ -21,13 +21,13 @@
 
             if($response->success)
             {
-                $response->code = 200; // Ok
-                $response->content = array("message" => "Message was deleted", "success" => true);
+                $response->_code = 200; // Ok
+                $response->_content = array("message" => "Message was deleted", "success" => true);
             }
             else
             {
-                $response->code = 503; // service unavailable
-                $response->content = array("message" => "Unable to delete message", "success" => false);
+                $response->_code = 503; // service unavailable
+                $response->_content = array("message" => "Unable to delete message", "success" => false);
             }
 
             return $response->emit();

@@ -25,13 +25,13 @@
 
             if($user->update())
             {
-                $response->code = 200; // Ok
-                $response->content = array("message" => "User updated.");
+                $response->_code = 200; // Ok
+                $response->_content = array("message" => "User updated.");
             }
             else
             {
-                $response->code = 404; // Service unavailable
-                $response->content = array("message" => "User does not exist.");
+                $response->_code = 404; // Service unavailable
+                $response->_content = array("message" => "User does not exist.");
             }
             
             return $response->emit();

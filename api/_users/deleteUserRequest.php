@@ -21,14 +21,14 @@
 
             if($user->delete())
             {
-                $response->code = 200; // Ok
-                $response->content = array("message" => "User was deleted.", "success" => true);
+                $response->_code = 200; // Ok
+                $response->_content = array("message" => "User was deleted.", "success" => true);
             }
             // if unable to delete the user
             else
             {
-                $response->code = 503; // Service unavailable
-                $response->content = array("message" => "Unable to delete user.", "success" => false);
+                $response->_code = 503; // Service unavailable
+                $response->_content = array("message" => "Unable to delete user.", "success" => false);
             }
             
             return $response->emit();

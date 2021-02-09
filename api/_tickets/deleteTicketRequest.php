@@ -21,14 +21,14 @@
 
             if($ticket->delete())
             {
-                $response->code = 200; // Ok
-                $response->content = array("message" => "The ticket was deleted.", "success" => true);
+                $response->_code = 200; // Ok
+                $response->_content = array("message" => "The ticket was deleted.", "success" => true);
             }
             // if unable to delete the ticket
             else
             {
-                $response->code = 503; // Service unavailable
-                $response->content = array("message" => "Unable to delete the ticket.", "success" => false);
+                $response->_code = 503; // Service unavailable
+                $response->_content = array("message" => "Unable to delete the ticket.", "success" => false);
             }
             
             return $response->emit();
