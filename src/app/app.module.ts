@@ -18,11 +18,8 @@ import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
-<<<<<<< HEAD
 import { PublicProfileComponent } from './public-profile/public-profile.component';
-=======
 import { ViewRpComponent } from './view-rp/view-rp.component';
->>>>>>> d8d1cfb0e1601a12d4b090ad67a9314b68d3ebf4
 
 @NgModule({
   declarations: [
