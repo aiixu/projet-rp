@@ -16,6 +16,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { SearchComponent } from './search/search.component';
+import { ViewRpComponent } from './view-rp/view-rp.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: "administration",
     component: AdministrationComponent
+  },
+  {
+    path: "view-rp",
+    component: ViewRpComponent
   },
   {
     path: "apitest",
