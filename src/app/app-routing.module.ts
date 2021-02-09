@@ -16,7 +16,6 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { SearchComponent } from './search/search.component';
-import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { ViewRpComponent } from './view-rp/view-rp.component';
 
 const routes: Routes = [
@@ -41,10 +40,6 @@ const routes: Routes = [
     component: ConnexionComponent
   },
   {
-    path: "view-profile",
-    component: ViewProfileComponent
-  },
-  {
     path: "+18",
     component: MajorMinorComponent
   },
@@ -65,16 +60,16 @@ const routes: Routes = [
     component: AdministrationComponent
   },
   {
-    path: "view-rp",
+    path: "users/:username",
+    component: ViewProfileComponent
+  },
+  {
+    path: "users/:userid/rps/:id",
     component: ViewRpComponent
   },
   {
     path: "apitest",
     component: ApitestComponent
-  },
-  {
-    path: "users/:username",
-    component: PublicProfileComponent
   },
   {
     path: "api",

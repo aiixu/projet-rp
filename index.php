@@ -352,7 +352,24 @@
     }, "get");
 
     // update rp
+    Route::add("/api/rps/([0-9]*)", function($id)
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
 
+        // initialize request
+        $request_model = new UpdateRpRequestModel();
+        $request_model->id = $id;
+        
+        $request_content = json_decode(file_get_contents("php://input"));
+
+        if(isset($request_content->content)) { $request_model->content = $request_content->content; }
+        if(isset($request_content->title)) { $request_model->title = $request_content->title; }
+
+        $req = new UpdateRpRequest($db);
+        $req->put($request_model);
+    },"put");
 
     // delete rp
     Route::add("/api/rps/([0-9]*)",  function($idRp)

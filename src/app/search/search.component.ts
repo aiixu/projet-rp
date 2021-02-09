@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit
   lastPageIndex: number = 1;
 
   users: Array<GetUsersResponseUserModel>;
-  time: string;
+  result: string;
   
   params: any;
   query: string;
@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit
       case "users":
       default:
         this.users = [];
-        this.time = "";
+        this.result = "";
 
         const request: GetUsersRequest = new GetUsersRequest();
         const requestModel: GetUsersRequestModel = new GetUsersRequestModel(query, page);
@@ -63,7 +63,9 @@ export class SearchComponent implements OnInit
           .catch(console.error)
           .then(_ => {
             stopwatch.stop();
-            this.time = stopwatch.getTime() + "ms";
+            
+            const time: number = stopwatch.getTime() / 1000;
+            this.result = `${this.users.length} résultats (${time.toFixed(2)} secondes)`;
           });
         
         break;
