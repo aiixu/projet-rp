@@ -18,7 +18,6 @@ import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
-import { PublicProfileComponent } from './public-profile/public-profile.component';
 import { ViewRpComponent } from './view-rp/view-rp.component';
 
 @NgModule({
@@ -40,8 +39,7 @@ import { ViewRpComponent } from './view-rp/view-rp.component';
     ViewProfileComponent,
     SearchComponent,
     AdministrationComponent,
-    PublicProfileComponent,
-    ViewRpComponent,
+    ViewRpComponent
   ],
   imports: [
     BrowserModule,

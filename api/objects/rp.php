@@ -153,8 +153,7 @@
                     FROM
                       `$this->table_name`
                     WHERE
-                      `user_id` LIKE '$keywords' OR
-                      `is_public` LIKE '$keywords'
+                      `title` LIKE '$keywords'
                     ORDER BY
                       `date` ASC
                     LIMIT ?, ?";

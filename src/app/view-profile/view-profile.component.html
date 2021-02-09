@@ -8,54 +8,47 @@
 </section>
 
 
-  
+<div *ngIf="user" class="container">
   <div class="field is-grouped">
     
   </div>
   <div class="columns is-mobile">
     <div class="column box  BoxColor2">
-    <div class = "">
-    
+      <div class = "">
+      
         <figure class=" image is-128x128 is-pulled-left">
-            <img class="is-rounded" src="assets/imageDs.jpg">
-          </figure><br><br>
-<h1  class= "TitleColor subtitle is-size-3 ">Le pseudo de la personne</h1>
-<div class="box BoxColor3 ">
-<ul class="subtitle is-size-4 has-text-centered  "> 
-    <li>compte crée le 11/11/2020</li>  <br>
-    <li>derniere publications le 12/11/2020</li> <br>
-    <li>nombre de rp : 2</li>  <br></ul> 
+          <img class="is-rounded" src="assets/imageDs.jpg">
+        </figure>
+        
+        <br><br>
+
+        <h1 class= "TitleColor subtitle is-size-3 ">{{ user.username }}</h1>
+        <div class="box BoxColor3 ">
+          <ul class="subtitle is-size-4 has-text-centered  "> 
+            <li>compte crée le 11/11/2020</li>
+            <li>derniere publications le 12/11/2020</li>
+            <li>nombre de rp : 2</li>
+          </ul> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <p class="TitleColor subtitle is-size-3 has-text-centered">Contacter "pseudo de la personne"</p>
+    <div class="field">
+      <div class="field BoxColor3 box">
+        <label class="label">Message</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="pas d'insulte , ni de menaces ! "></textarea>
+        </div>
+      </div>
+      <div class="control">
+        <div class="buttons buttons is-centered">
+            <a class=" button is-primary  button is-link is-rounded button is-large ButtonColor2 "><strong>Hop ça envoie ?  </strong></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-    </div>
-    </div>
-
-    </div>
-    <div class="column">
-        <p class="TitleColor subtitle is-size-3 has-text-centered">Contacter "pseudo de la personne"</p>
-            
-
-  
-  <div class="field">
  
-   
-    
-  
- 
-    
-
-  
-  <div class="field BoxColor3 box">
-    <label class="label">Message</label>
-    <div class="control">
-      <textarea class="textarea" placeholder="pas d'insulte , ni de menaces ! "></textarea>
-    </div>
-  </div>
-  <div class="control">
-    <div class="buttons buttons is-centered">
-        <a class=" button is-primary  button is-link is-rounded button is-large ButtonColor2 "><strong>Hop ça envoie ?  </strong></a>
-    </div>
-  </div>
- 
-  
-  
    
