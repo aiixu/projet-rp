@@ -5,9 +5,7 @@ import axios from "axios";
 export class CreateRpRequest
 {
     public async post(request: NonNullable<CreateRpRequestModel>): Promise<CreateRpResponseModel> {
-        const route: string = `users/${request.userId}/rp`;
-        const response: any = await axios.post(`${environment.apiUrl}${route}`, classToPlain(request));
-
+        const response: any = await axios.post(`${environment.apiUrl}rps`, classToPlain(request));
         return plainToClass(CreateRpResponseModel, response.data, { excludeExtraneousValues: true });
     }
 }

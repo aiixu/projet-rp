@@ -6,9 +6,9 @@
     {
         private $db;
 
-        function __construct($db)
+        function __construct($conn)
         {
-            $this->db = $db;
+            $this->db = $conn;
         }
 
         public function delete($request)

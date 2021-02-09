@@ -34,7 +34,7 @@
                       'id' = '$this->id'";
 
           // prepare query statement
-          $stmt = $this->db->prepare($query);
+          $stmt = $this->conn->prepare($query);
 
           // execute query
           $stmt->execute();
@@ -103,7 +103,7 @@
                       `id` = $this->id";
 
           // prepare query
-          $stmt = $this->db->prepare($query);
+          $stmt = $this->conn->prepare($query);
 
           // execute query
           if($stmt->execute())
