@@ -286,7 +286,7 @@
     // RP
 
     // create rp
-    Route::add("/api/rps", function($id)
+    Route::add("/api/rps", function()
     {
         $database = new Database();
         $db = $database->getConnection();
@@ -307,7 +307,7 @@
     }, "post");
 
     // get rp
-    Route::add("/api/users/([a-z-0-9-A-Z-]*)/rps/([0-9]*)", function($username, $idRp)
+    Route::add("/api/rps/([0-9]*)", function($id)
     {
         $database = new Database();
         $db = $database->getConnection();
