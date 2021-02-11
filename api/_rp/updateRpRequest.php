@@ -6,12 +6,12 @@
     {
         private $db;
 
-        function __construct($conn)
+        function __construct($db)
         {
-            $this->db = $conn;
+            $this->db = $db;
         }
 
-        public function get($request)
+        public function put($request)
         {
             $rp = new Rp($this->db);    
             $rp->id = $request->id;
