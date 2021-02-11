@@ -34,10 +34,14 @@ export class ViewRpComponent implements OnInit {
       .catch(console.error);       
   }
 
-  exportPdf(): void {    
-    const content: string = this.response.content;
+  exportPdf(): void {
     const doc = new jsPDF();
+    doc.text(this.getElm("title"), 15, 15);
+    doc.text(this.getElm("date"), 15, 20);
+    doc.save("out.pdf");
+  }
 
-    
+  getElm(id: string) : string {
+    return document.getElementById(id)?.innerHTML || `[NOTFOUND:${id}]`;
   }
 }
