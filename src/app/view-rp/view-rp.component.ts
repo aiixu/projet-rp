@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetRpRequest, GetRpRequestModel, GetRpResponseModel } from 'src/apiwrapper/rp/getRpRequest';
 
+import { jsPDF } from 'jspdf';
+
 @Component({
   selector: 'app-view-rp',
   templateUrl: './view-rp.component.html',
@@ -30,5 +32,16 @@ export class ViewRpComponent implements OnInit {
       })
       // en cas d'erreur, on l'affiche dans la console
       .catch(console.error);       
+  }
+
+  exportPdf(): void {
+    const doc = new jsPDF();
+    doc.text(this.getElm("title"), 15, 15);
+    doc.text(this.getElm("date"), 15, 20);
+    doc.save("out.pdf");
+  }
+
+  getElm(id: string) : string {
+    return document.getElementById(id)?.innerHTML || `[NOTFOUND:${id}]`;
   }
 }

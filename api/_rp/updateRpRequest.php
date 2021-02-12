@@ -6,19 +6,18 @@
     {
         private $db;
 
-        function __construct($conn)
+        function __construct($db)
         {
-            $this->db = $conn;
+            $this->db = $db;
         }
 
-        public function get($request)
+        public function put($request)
         {
             $rp = new Rp($this->db);    
             $rp->id = $request->id;
             
             $response = new UpdateRpResponseModel();
 
-            if(isset($request->user_id)) { $rp->user_id = $request->user_id; }
             if(isset($request->is_public)) { $rp->is_public = $request->is_public; }
             if(isset($request->content)) { $rp->content = $request->content; }
             if(isset($request->title)) { $rp->title = $request->title; }
@@ -41,11 +40,9 @@
     // Request
     class UpdateRpRequestModel
     {
-        public $user_id;
         public $is_public;
         public $title;
         public $content;
-        public $date;
     }
 
     // Response

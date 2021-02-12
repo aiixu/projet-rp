@@ -372,6 +372,7 @@
 
         if(isset($request_content->content)) { $request_model->content = $request_content->content; }
         if(isset($request_content->title)) { $request_model->title = $request_content->title; }
+        if(isset($request_content->is_public)) { $request_model->title = $request_content->is_public; }
 
         $req = new UpdateRpRequest($db);
         $req->put($request_model);
