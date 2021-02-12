@@ -19,6 +19,7 @@ import { AdministrationComponent } from './administration/administration.compone
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
 import { ViewRpComponent } from './view-rp/view-rp.component';
+import { ListeRpComponent } from './liste-rp/liste-rp.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ViewRpComponent } from './view-rp/view-rp.component';
     ViewProfileComponent,
     SearchComponent,
     AdministrationComponent,
-    ViewRpComponent
+    ViewRpComponent,
+    ListeRpComponent
   ],
   imports: [
     BrowserModule,
