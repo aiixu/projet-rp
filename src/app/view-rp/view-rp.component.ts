@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GetRpRequest, GetRpRequestModel, GetRpResponseModel } from 'src/apiwrapper/rp/getRpRequest';
 
 import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteRpRequest';
 
 @Component({
   selector: 'app-view-rp',
@@ -11,15 +13,16 @@ import { jsPDF } from 'jspdf';
 })
 export class ViewRpComponent implements OnInit {
   response : GetRpResponseModel;
+  id: number;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get("id");
+    this.id = Number(this.route.snapshot.paramMap.get("id"));
 
     const request: GetRpRequest = new GetRpRequest();
     // on créé un objet qui est le contenu de la requête
-    const requestModel: GetRpRequestModel = new GetRpRequestModel(Number(id));
+    const requestModel: GetRpRequestModel = new GetRpRequestModel(this.id);
 
     // on envoie la requête
     request.get(requestModel)
@@ -35,13 +38,40 @@ export class ViewRpComponent implements OnInit {
   }
 
   exportPdf(): void {
-    const doc = new jsPDF();
-    doc.text(this.getElm("title"), 15, 15);
-    doc.text(this.getElm("date"), 15, 20);
-    doc.save("out.pdf");
+    const elm: HTMLElement | null = document.getElementById("content");
+    if(elm == null) { return; }
+    
+    html2canvas(elm, {scrollX: -5}).then(canvas => {
+      const imgWidth = 190;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const contentDataURL = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      
+      pdf.addImage(contentDataURL, "PNG", 10, 10, imgWidth, imgHeight)
+      pdf.save(`${this.response.title}.pdf`);
+    });
   }
 
-  getElm(id: string) : string {
-    return document.getElementById(id)?.innerHTML || `[NOTFOUND:${id}]`;
+  deleteRp(): void {
+    const request: DeleteRpRequest = new DeleteRpRequest();
+    
+    request.delete(new DeleteRpRequestModel(this.id))
+      .then(res =>
+      {
+        if(res.success)
+        {
+          alert("Le RP à été supprimé");
+          const username: string | null = this.route.snapshot.paramMap.get("username");
+          if(username != null)
+          {
+            this.router.navigateByUrl(`/users/${username}`);
+          }
+          else
+          {
+            this.router.navigateByUrl(`/home`);
+          }
+        }
+      })
+      .catch(console.error);
   }
 }

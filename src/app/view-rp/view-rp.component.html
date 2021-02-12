@@ -1,27 +1,21 @@
-
-
 <section class="hero is-info">
     <div class="hero-body">(image qui zoom)</div>
 </section>
 
 <div class="container" *ngIf="response">
-    <div class="box BoxColor3">
-        <div class="content">
+    <div class="box BoxColor3 rp-container">
+        <div class="content" id="content">
             <div class="mb-5">
-                <span id="title" class="title">{{ response.title }}</span><br>
-                <span id="date" class="has-text-grey">{{ response.date }}</span>
+                <span class="title">{{ response.title }}</span><br>
+                <span class="has-text-grey">{{ response.date }}</span>
             </div>
-            <p id="content">{{ response.content }}</p >
+            <p class="rp-content">{{ response.content }}</p >
         </div>
     </div>
     
     <div class="buttons buttons is-centered">
         <button (click)="exportPdf()" class="button is-success">Exporter</button>
-        <button class="button is-primary button is-link is-rounded button is-large ButtonColor2">modifier</button>
-        <button class="button is-primary button is-link is-rounded button is-large ButtonColor2">supprimer</button>
+        <button class="button is-warning">Modifier</button>
+        <button (click)="deleteRp()" class="button is-danger">Supprimer</button>
     </div>    
 </div>
-
-
-
-

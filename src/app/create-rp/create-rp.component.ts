@@ -22,7 +22,6 @@ export class CreateRPComponent implements OnInit {
     requestModel.title = form.value.title;
     requestModel.content = form.value.description + "\n" + form.value.text;
     requestModel.isPublic = form.value.isPublic;
-    console.log(CreateRpRequest);
 
     request.post(requestModel)
       .then((res: any) => {

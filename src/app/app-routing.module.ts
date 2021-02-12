@@ -64,7 +64,7 @@ const routes: Routes = [
     component: ViewProfileComponent
   },
   {
-    path: "users/:userid/rps/:id",
+    path: "users/:username/rps/:id",
     component: ViewRpComponent
   },
   {
