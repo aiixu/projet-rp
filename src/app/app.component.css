@@ -1,0 +1,10 @@
+.scrollable{
+    overflow-y: scroll;
+    }
+    .header {
+        position: fixed;
+        display: block;
+        width: 100%;
+       
+        z-index: 1000;
+    }

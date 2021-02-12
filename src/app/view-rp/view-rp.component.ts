@@ -11,6 +11,7 @@ import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteR
   templateUrl: './view-rp.component.html',
   styleUrls: ['./view-rp.component.css']
 })
+
 export class ViewRpComponent implements OnInit {
   response : GetRpResponseModel;
   id: number;
@@ -34,14 +35,14 @@ export class ViewRpComponent implements OnInit {
         this.response = res;
       })
       // en cas d'erreur, on l'affiche dans la console
-      .catch(console.error);       
+      .catch(console.error);       //je fais des annotations construcives
   }
 
   exportPdf(): void {
     const elm: HTMLElement | null = document.getElementById("content");
     if(elm == null) { return; }
     
-    html2canvas(elm, {scrollX: -5}).then(canvas => {
+    html2canvas(elm, { scrollX: -5 }).then(canvas => {
       const imgWidth = 190;
       const imgHeight = canvas.height * imgWidth / canvas.width;
       const contentDataURL = canvas.toDataURL("image/png");

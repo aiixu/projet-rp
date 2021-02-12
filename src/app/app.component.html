@@ -1,70 +1,70 @@
-<header>
-  <nav class="navbar BoxColor3" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand ">
-      <img
-        height="50%"
-        width="50"
-        src="https://previews.123rf.com/images/novazaigen/novazaigen1812/novazaigen181200002/115735705-otter-head-vector-illustration.jpg"
-      />
-    </div>
+<div class="">
+  <header class="header"> 
+    <nav class="navbar BoxColor3" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand ">
+        <img
+          height="50%"
+          width="50"
+          src="https://previews.123rf.com/images/novazaigen/novazaigen1812/novazaigen181200002/115735705-otter-head-vector-illustration.jpg"
+        />
+      </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="./home"><span class="icon">
-          <i class="fa fa-home -2x"></i>
-        </span></a>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="./home"><span class="icon">
+            <i class="fa fa-home -2x"></i>
+          </span></a>
+          
+          <a class="navbar-item" href="./home#LaListe">Liste des RP</a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
         
-        <a class="navbar-item" href="./home#LaListe">Liste des RP</a>
+            <a class="navbar-link">Profil</a>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-      
-          <a class="navbar-link">Profil</a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="./profile"><i class="fa fa-id-card"></i>&nbsp; Compte</a>
-            <a class="navbar-item" href="./create-rp"><i class="fa fa-book"></i>&nbsp; Créez un RP</a>
-            <a class="navbar-item" href="./contact"><i class="fa fa-envelope"></i>&nbsp; Contact</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <form (submit)="onSubmit()">
-            <div class="field has-addons">
-              <div class="control">
-                <input #searchBarInput class="input" type="text" placeholder="Rechercher">
-              </div>
-              <div class="control">
-                <a class="button" (click)="onSubmit()">
-                  <i class="fa fa-search"></i>
-                </a>
-              </div>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="./profile"><i class="fa fa-id-card"></i>&nbsp; Compte</a>
+              <a class="navbar-item" href="./create-rp"><i class="fa fa-book"></i>&nbsp; Créez un RP</a>
+              <a class="navbar-item" href="./contact"><i class="fa fa-envelope"></i>&nbsp; Contact</a>
             </div>
-          </form>
+          </div>
         </div>
 
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary ButtonColor2" href="./registration"><strong>S'inscrire</strong></a>
-            <a class="button is-light" href="./connexion">Connexion</a>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <form (submit)="onSubmit()">
+              <div class="field has-addons">
+                <div class="control">
+                  <input #searchBarInput class="input" type="text" placeholder="Rechercher">
+                </div>
+                <div class="control">
+                  <a class="button" (click)="onSubmit()">
+                    <i class="fa fa-search"></i>
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary ButtonColor2" href="./registration"><strong>S'inscrire</strong></a>
+              <a class="button is-light" href="./connexion">Connexion</a>
+            </div>
           </div>
         </div>
       </div>
+    </nav>
+  </header>
+
+  <router-outlet class="page-content"></router-outlet>
+
+  <footer class="scrollable BoxColor3">
+    <div class="content has-text-centered">
+      <p>
+        <strong>RP project</strong> par Hugo, Stévan, Pierre et Marius.<a href="./who-are-we">Qui sommes nous ?</a>&nbsp;
+        <a href="./faq">FaQs</a>&nbsp;
+        <a href="./contact">Nous contacter</a>
+      </p>
     </div>
-  </nav>
-</header>
-
-<router-outlet></router-outlet>
-
-<footer class="footer BoxColor3">
-  <div class="content has-text-centered">
-    <p>
-      <strong>RP project</strong> par Hugo, Stévan, Pierre et Marius.<a
-        href="./who-are-we"
-      >
-        Qui sommes nous ?</a
-      >
-    </p>
-  </div>
-</footer>
+  </footer>
+</div>
