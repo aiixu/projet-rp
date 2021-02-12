@@ -12,7 +12,7 @@ import { MajorMinorComponent } from './major-minor/major-minor.component';
 import { FaqComponent } from './faq/faq.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
-
+import {ListeRpComponent } from './liste-rp/liste-rp.component';
 import { ApiComponent } from './api/api.component';
 import { ApitestComponent } from './apitest/apitest.component';
 import { SearchComponent } from './search/search.component';
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
+  },
+  {
+    path: "liste-rp",
+    component: ListeRpComponent
   },
   {
     path: "profile",
