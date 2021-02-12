@@ -66,7 +66,24 @@ $text: black;
   background:#203961 !important;
 
 }
+//pour le flex du footer , a mettre sur chaque body des pages
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  .header {
+    position: fixed;
+    display: block;
+    width: 100%;
+   
+    z-index: 1000;
+}
 
+
+  footer {
+    margin: auto auto 0 auto;
+  }
 // Import only what you need from Bulma
 @import '~node_modules/bulma/bulma.sass';
 //@import "~node_modules/bulma-prefers-dark/bulma-prefers-dark.sass";
