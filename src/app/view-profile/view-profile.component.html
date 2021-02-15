@@ -1,3 +1,4 @@
+<!-- Image qui zoom-->
 <section class="hero is-info">
     <div class="hero-body">
         
@@ -7,7 +8,7 @@
     </div>
 </section>
 
-
+<!--Accès au profil-->
 <div *ngIf="user" class="container">
   <div class="field is-grouped">
     
@@ -21,7 +22,7 @@
               <img class="is-rounded" [src]="'https://cscfontaine.centres-sociaux.fr/files/2019/10/user-icon-image-placeholder-300-grey.jpg'" [alt]="'Photo de profile de ' + user.username">
             </figure>
           </div>
-
+          <!-- Accès à la variable user-->
           <div class="pl-4" style="display: inline-block;vertical-align: 10px;">
             <span class= "TitleColor subtitle is-size-3 ">{{ user.username }}</span> <br/>
             <span *ngIf="user.isPublic == true" class="TitleColor subtitle is-size-6 ">{{ user.firstName }} {{ user.lastName }}</span>
@@ -44,7 +45,7 @@
       </div>
     </div>
   </div>
-
+  <!-- Contact -->
   <div *ngIf="user.isPublic == true" class="column">
     <p class="TitleColor subtitle is-size-3 has-text-centered">Contacter "pseudo de la personne"</p>
     <div class="field">

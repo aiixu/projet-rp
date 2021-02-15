@@ -1,3 +1,4 @@
+<!--Partie contact avec formulaire-->
 <section class="hero is-fullheight">
     <div class="hero-body">
         <div class="container ">
@@ -5,7 +6,7 @@
                 <div class="media-content">
                     <div class="content">
                       <p>
-                    
+                      <!-- toute les classes couleurs sont dans le scss de l'api, pour le reste des mises en formes , bulma.io -->
                         
                         <p class=" box title is-size-1 title has-text-centered TitleColor" style="background-color: #203961;" >Contactez nous</p>
                         <p class="subtitle is-size-3"></p>
@@ -30,7 +31,7 @@
                   </div>
 
          
-                
+                <!--Formulaire d'envoie-->
                 <form #contactForm="ngForm" (ngSubmit)=" submitTickets(contactForm)" class="column is-one-third has-text-left" style="background-color: #203961;">
                     <div class="field">
                         <label class="label" style="color: white;">Nom</label>
@@ -61,7 +62,7 @@
     <div class="modal">
         <div class="modal-background"></div>
         <div class="modal-content">
-          <!-- Any other Bulma elements you want -->
+        
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
       </div>

@@ -20,6 +20,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { SearchComponent } from './search/search.component';
 import { ViewRpComponent } from './view-rp/view-rp.component';
 import { ListeRpComponent } from './liste-rp/liste-rp.component';
+import { LoginService } from './_services/login/login.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { ListeRpComponent } from './liste-rp/liste-rp.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ ],
+  providers: [ LoginService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

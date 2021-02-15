@@ -28,14 +28,20 @@ export class ViewRpComponent implements OnInit {
     // on envoie la requête
     request.get(requestModel)
       // une fois qu'elle a retourné quelque chose,
-      .then((res) => {
-        // on la stock dans le component
-        console.log(res);
-        
-        this.response = res;
+      .then(res => {
+        if(res.isPublic)
+        {
+          // on la stock dans le component        
+          this.response = res;
+        }
+        else
+        {
+          this.response = new GetRpResponseModel();
+          this.response.isPublic = false; 
+        }
       })
       // en cas d'erreur, on l'affiche dans la console
-      .catch(console.error);       //je fais des annotations construcives
+      .catch(console.error);       
   }
 
   exportPdf(): void {

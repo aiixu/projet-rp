@@ -1,38 +1,43 @@
+<!-- Image qui zoom -->
 <section class="hero is-info">
     <div class="hero-body">(image qui zoom)</div>
 </section>
+
+<!-- Toute les classes couleurs sont dans le scss de l'api, pour le reste des mises en formes, bulma.io -->
+<!-- Partie rédaction -->
 <form class= "box BoxColor3" #titleForm="ngForm" (ngSubmit)="createRp(titleForm)">
   <section class="hero is-small is-primary">
     <div class="hero-body ButtonColor4">
-    
       <h1 class="TittleRP subtitle is-size-3">Créez votre RP</h1><br>
-      <h2 class="has-text-centered subtitle is-size-3">Titre</h2><br>
       <div class="column">
         <img class="is-pulled-left image is-64x64" src="assets/dragon.gif" alt="">
+      </div>
     </div>
     <div class="column">
-        <img class="is-pulled-right image is-64x64" src="assets/dragon.gif" alt="">
+      <img class="is-pulled-right image is-64x64" src="assets/dragon.gif" alt="">
     </div>
-      <div class="content-wrapper">    
-        <input type="text" ngModel name="title" style="overflow:auto" rows=5 cols=150><br><br>
+    <h2 class="has-text-centered subtitle is-size-3">Titre</h2><br>
+    <div class="content-wrapper">    
+      <input type="text" ngModel name="title" style="overflow:auto" rows=5 cols=150><br><br>
         
-        <p class="subtitle is-size-3">Decrivez votre univers</p>
-        <textarea ngModel name="description" style="overflow:auto" rows=5 cols=150></textarea><br>
+      <p class="subtitle is-size-3">Decrivez votre univers</p>
+      <textarea ngModel name="description" style="overflow:auto" rows=5 cols=150></textarea><br>
 
-        <p class="subtitle subtitle is-size-3">Écrivez votre histoire </p><br>
-        <textarea ngModel name="text" style="overflow:auto" rows=10 cols=150></textarea><br><br>
-      </div>
+      <p class="subtitle subtitle is-size-3">Écrivez votre histoire </p><br>
+      <textarea ngModel name="text" style="overflow:auto" rows=10 cols=150></textarea><br><br>
     </div>
   </section>
 
+
   <div class=" buttons is-centered">
-    <div class="control">
-      <button  type="submit"  class="button is-primary  button is-link is-rounded button is-large ButtonColor2">Publier</button>
+    <div class=" buttons is-centered">
+      <div class="control">
+        <button  type="submit"  class="button is-primary  button is-link is-rounded button is-large ButtonColor2">Publier</button>
+      </div>
+      <label class="checkbox box  is-small is-primary ButtonColor2 subtitle is-size-5  ">
+        <input class ="text  " name="isPublic" ngModel type="checkbox">
+      <strong class=" TextColor2 "> Mon histoire est visible par tous </strong> 
+      </label>
     </div>
-    <label class="checkbox box  is-small is-primary ButtonColor2 subtitle is-size-5  ">
-      <input class ="text  " name="isPublic" ngModel type="checkbox">
-    <strong class=" TextColor2 "> Mon histoire est visible par tous </strong> 
-    </label>
   </div>
 </form>
-

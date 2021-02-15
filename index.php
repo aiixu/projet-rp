@@ -41,14 +41,29 @@
     /// USERS
 
     // auth 
-    Route::add("/api/users/auth", function()
+    Route::add("/api/auth/login", function()
     {
         // connect to db
         $database = new Database();
         $db = $database->getConnection();
 
         $body = json_decode(file_get_contents("php://input"));
-        echo json_encode(array("success" => true, "token" => md5($body->username . "_" . date("Y-m-s h:i:s"))));
+        $success = true; // todo: compare in db
+
+        if($success)
+        {
+            http_response_code(200);
+            echo json_encode(array(
+                "success" => true, 
+                "token" => md5($body->username . "_" . date("Y-m-s h:i:s")),
+                "email" => "jeanmich"));
+        }
+        else
+        {
+            http_response_code(400);
+            echo json_encode(array("success" => false));
+        }
+
     }, "post");
 
     // create user

@@ -2,20 +2,31 @@
     <div class="hero-body">(image qui zoom)</div>
 </section>
 
+<!-- toute les classes couleurs sont dans le scss de l'api, pour le reste des mises en formes , bulma.io -->
 <div class="container" *ngIf="response">
-    <div class="box BoxColor3 rp-container">
-        <div class="content" id="content">
-            <div class="mb-5">
-                <span class="title">{{ response.title }}</span><br>
-                <span class="has-text-grey">{{ response.date }}</span>
+    <div *ngIf="response.isPublic == true">
+        <div class="box BoxColor3 rp-container">
+            <div class="content" id="content">
+                <div class="mb-5">
+                    <span class="title">{{ response.title }}</span><br>   <!--accede a la variable response -->
+    
+                    <span class="has-text-grey">{{ response.date }}</span>
+                </div>
+                <p class="rp-content">{{ response.content }}</p >
             </div>
-            <p class="rp-content">{{ response.content }}</p >
+        </div>
+    
+        <div class="buttons buttons is-centered">
+            <button (click)="exportPdf()" class="button is-success">Exporter</button>
+            <button class="button is-warning">Modifier</button>
+            <button (click)="deleteRp()" class="button is-danger">Supprimer</button>
         </div>
     </div>
-    
-    <div class="buttons buttons is-centered">
-        <button (click)="exportPdf()" class="button is-success">Exporter</button>
-        <button class="button is-warning">Modifier</button>
-        <button (click)="deleteRp()" class="button is-danger">Supprimer</button>
-    </div>    
+    <div *ngIf="response.isPublic == false">
+        <div class="box BoxColor3">
+            <p class="subtitle is-5">
+                <i class="fa fa-lock"></i> Ce RP est en privé
+            </p>
+        </div>
+    </div>
 </div>

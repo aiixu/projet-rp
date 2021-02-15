@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CreateRpRequest, CreateRpRequestModel } from 'src/apiwrapper/rp/createRpRequest';
 
 @Component({
@@ -8,8 +9,8 @@ import { CreateRpRequest, CreateRpRequestModel } from 'src/apiwrapper/rp/createR
   styleUrls: ['./create-rp.component.css']
 })
 export class CreateRPComponent implements OnInit {
-
-  constructor() { }
+  constructor(private router: Router) { 
+  }
 
   ngOnInit(): void {
   }
@@ -24,8 +25,15 @@ export class CreateRPComponent implements OnInit {
     requestModel.isPublic = form.value.isPublic;
 
     request.post(requestModel)
-      .then((res: any) => {
-        console.log(res);
+      .then(res => {
+        const id: number = res.id;
+        if(id == undefined)
+        {
+          return;
+        }
+
+        const route: string = `/users/darksasuke22/rps/${id}`;
+        this.router.navigateByUrl(route);
       })
       .catch(console.error);
 
