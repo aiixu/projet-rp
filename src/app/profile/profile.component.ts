@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import axios from 'axios';
 import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteRpRequest';
 import { GetRpsRequest, GetRpsRequestModel, GetRpsResponseRpModel } from 'src/apiwrapper/rp/getRpsRequest';
+import { UpdateUserRequest, UpdateUserRequestModel } from 'src/apiwrapper/users/updateUserRequest';
 import { environment } from 'src/environments/environment';
 import { ImagesService } from '../_services/images/images.service';
 import { LoginService } from '../_services/login/login.service';
+import axios from 'axios';
 
 class ImageSnippet {
-  constructor(public src: string, public file: File) {}
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -21,6 +22,10 @@ export class ProfileComponent implements OnInit {
   loading: boolean;
   rps: Array<GetRpsResponseRpModel>;
   selectedFile: ImageSnippet;
+  filename: string;
+
+  file = new FormControl('')
+  file_data : any = '';
 
   constructor(private imageService: ImagesService, private router: Router, public loginService: LoginService) { 
     if(!loginService.isLoggedIn())
@@ -63,15 +68,15 @@ export class ProfileComponent implements OnInit {
       .catch(console.error);
   }
 
-  file=new FormControl('')
-  file_data:any=''
-  fileChange(event:any) {
+  fileChange(event: any) {
     const fileList: FileList = event.target.files;
 
     //check whether file is selected or not
     if (fileList.length > 0) 
     {
       const file = fileList[0];
+
+      this.filename = file.name;
       
       //get file information such as name, size and type
       console.log('finfo', file.name, file.size, file.type);
@@ -97,11 +102,25 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  
-  uploadFile()
-    {
-      axios.post(environment.apiUrl+'upload',this.file_data)
-        .then(console.log)
-        .catch(console.error);
-    }
+  uploadFile(): void
+  {
+    axios.post(environment.apiUrl + "upload",this.file_data)
+      .then(console.log)
+      .catch(console.error);
+  }
+
+  async update(): Promise<void> {
+    const request: UpdateUserRequest = new UpdateUserRequest();
+    const requestModel: UpdateUserRequestModel = new UpdateUserRequestModel();
+
+    const response = await axios.post(`${environment.apiUrl}upload`, this.file_data);
+    if(response.status != 200) { return; }
+
+    requestModel.id = this.loginService.getLoggedUser()!.id;
+    requestModel.profilePicture = response.data.path;
+
+    await request.put(requestModel);
+
+    alert("Votre profil a été mis à jour");
+  }
 }

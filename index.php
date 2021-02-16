@@ -73,8 +73,9 @@
         //move the file to target folder
         if (move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) 
         {
-            $result["status"] = 201;
+            $result["status"] = 200;
             $result["message"] = "Uploaded file successfully.";
+            $result["path"] = $target_path;
         }
         else
         {

@@ -101,16 +101,6 @@
                     <button class="delete" aria-label="delete"></button>
                   </div>
                   <div class="message-body">
-                    ya plus pékuuuu
-                  </div>
-
-                </article>
-                <article class="message is-link">
-                  <div class="message-header">
-                    <a href="dudule">Dudule </a> <a href="dudule">répondre </a>
-                    <button class="delete" aria-label="delete"></button>
-                  </div>
-                  <div class="message-body">
                     1er message
                   </div>
                 </article>
@@ -132,17 +122,17 @@
             <article class="tile is-child notification is-danger ButtonColor4">
               <div class="file has-name">
                 <label class="file-label">
-                  <input class="file-input" type="file" name="resume">
+                  <input [formControl]="file" (change)="fileChange($event)" class="file-input" type="file">
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fa fa-upload"></i>
                     </span>
                     <span class="file-label">
-                      Choose a file…
+                      Choisissez un fichier...
                     </span>
                   </span>
-                  <span class="file-name">
-                    Screen Shot 2017-07-29 at 15.54.25.png
+                  <span class="file-name" id="filename">
+                    {{ filename }}
                   </span>
                 </label>
               </div>
@@ -229,16 +219,7 @@
       <p>
     </div>
     <div class="buttons buttons is-centered">
-      <a class=" button is-primary "><strong>Appliquer</strong></a>
+      <a class=" button is-primary " (click)="update()"><strong>Appliquer</strong></a>
     </div>
   </section>
-
-
 </div>
-
-<input [formControl]="file" 
- (change)="fileChange($event)" 
- type="file" placeholder="File">
- <button style="margin-top:20px" (click)="uploadFile()" >
-      Upload
-</button>

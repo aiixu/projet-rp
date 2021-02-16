@@ -60,7 +60,7 @@ const routes: Routes = [
     component: FaqComponent
   },
   {
-    path: "administration",
+    path: "admin",
     component: AdministrationComponent
   },
   {
