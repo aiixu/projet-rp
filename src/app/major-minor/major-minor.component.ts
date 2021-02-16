@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../_services/login/login.service';
 
 @Component({
   selector: 'app-major-minor',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MajorMinorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, public loginService: LoginService) {
+    if(!loginService.isLoggedIn())
+    {
+      router.navigate([ "/connexion" ], 
+      {
+        state: {
+          from: "major-minor"
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
   }

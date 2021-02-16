@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Stopwatch } from "ts-stopwatch";
 import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseUserModel } from 'src/apiwrapper/users/getUsersRequest';
+import { LoginService } from '../_services/login/login.service';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +23,17 @@ export class SearchComponent implements OnInit
   params: any;
   query: string;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private loginService: LoginService) {
+    if(!loginService.isLoggedIn())
+    {
+      router.navigate([ "/connexion" ], 
+      {
+        state: {
+          from: "home"
+        }
+      });
+    }
+   }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

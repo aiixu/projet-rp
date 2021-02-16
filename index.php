@@ -6,6 +6,8 @@
     include "api/_users/getUserRequest.php";
     include "api/_users/updateUserRequest.php";
     include "api/_users/deleteUserRequest.php";
+    include "api/_users/loginUserRequest.php";
+    include "api/_users/logoutUserRequest.php";
 
     include "api/_rp/createRpRequest.php";
     include "api/_rp/updateRpRequest.php";
@@ -40,30 +42,86 @@
     
     /// USERS
 
-    // auth 
+    Route::add("/api/upload", function()
+    {
+        //catch and convert json object info
+        $info = $_POST["info"];
+        $info = json_decode($info);
+
+        //get the file
+        $ori_fname = $_FILES['file']['name'];
+
+        //get file extension
+        $ext = pathinfo($ori_fname, PATHINFO_EXTENSION);
+
+        //target folder
+        $target_path = "images/";
+
+        //replace special chars in the file name
+        $actual_fname = $_FILES['file']['name'];
+        $actual_fname = preg_replace('/[^A-Za-z0-9\-]/', '', $actual_fname);
+
+        //set random unique name why because file name duplicate will replace
+        //the existing files
+        $modified_fname = uniqid(rand(10, 200)) . '-' . rand(1000, 1000000) . '-' . $actual_fname;
+
+        //set target file path
+        $target_path = $target_path . basename($modified_fname) . "." . $ext;
+        
+        $result = array();
+
+        //move the file to target folder
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $target_path)) 
+        {
+            $result["status"] = 201;
+            $result["message"] = "Uploaded file successfully.";
+        }
+        else
+        {
+            $result["status"] = 400;
+            $result["message"] = "File upload failed. Please try again.";
+        }
+
+        echo json_encode($result);
+    }, "post");
+
+    // login
     Route::add("/api/auth/login", function()
     {
         // connect to db
         $database = new Database();
         $db = $database->getConnection();
 
-        $body = json_decode(file_get_contents("php://input"));
-        $success = true; // todo: compare in db
+        // initialize request
+        $request_model = new LoginUserRequestModel();
 
-        if($success)
-        {
-            http_response_code(200);
-            echo json_encode(array(
-                "success" => true, 
-                "token" => md5($body->username . "_" . date("Y-m-s h:i:s")),
-                "email" => "jeanmich"));
-        }
-        else
-        {
-            http_response_code(400);
-            echo json_encode(array("success" => false));
-        }
+        $request_content = json_decode(file_get_contents("php://input"));
+        
+        $request_model->username = $request_content->username;
+        $request_model->password_hash = md5($request_content->password);  
 
+        // create and send request
+        $request = new LoginUserRequest($db);
+        $request->post($request_model);
+    }, "post");
+
+    // logout
+    Route::add("/api/auth/logout", function()
+    {
+        // connect to db
+        $database = new Database();
+        $db = $database->getConnection();
+
+        // initialize request
+        $request_model = new LogoutUserRequestModel();
+
+        $request_content = json_decode(file_get_contents("php://input"));
+        
+        $request_model->username = $request_content->username;
+
+        // create and send request
+        $request = new LogoutUserRequest($db);
+        $request->post($request_model);
     }, "post");
 
     // create user

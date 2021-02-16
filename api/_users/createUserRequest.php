@@ -25,7 +25,7 @@
 
             $user->username = $request->username;
             $user->email = $request->email;
-            $user->password_hash = $request->password_hash;
+            $user->password_hash = md5($request->password_hash);
             $user->is_public = $request->is_public;
             $user->profile_picture = $request->profile_picture;
 

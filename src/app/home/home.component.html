@@ -38,7 +38,7 @@
 
         </div>
         <div class="buttons buttons is-centered ">
-            <a class=" button is-primary  button is-link is-rounded button is-large ButtonColor2 " href="./connexion"><strong>Inscription</strong></a>
+            <a *ngIf="!loginService.isLoggedIn()" class=" button is-primary  button is-link is-rounded button is-large ButtonColor2 " href="./connexion"><strong>Inscription</strong></a>
         </div>
     <section>     
         <div class="box BoxColor3 ">

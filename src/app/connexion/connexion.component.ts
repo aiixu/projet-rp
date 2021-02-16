@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import axios from 'axios';
-import { environment } from 'src/environments/environment'
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../_services/login/login.service';
 
 @Component({
@@ -10,26 +9,26 @@ import { LoginService } from '../_services/login/login.service';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService, private router: Router, private route: ActivatedRoute) 
+  { }
 
   ngOnInit(): void {
   }
 
-  connect(form: NgForm) : void {
-    console.log({   username: form.value["username"],
-    password: form.value["password"]
-  });
-    
-    /*axios.post(`${environment.apiUrl}users/auth`, {
-        username: form.value["username"],
-        password: form.value["password"]
-      })
-      .then(res => {
-        console.log(res);
-      })
-      .catch(console.error);*/
+  async connect(form: NgForm) : Promise<void> {
+    console.log({ username: form.value["username"], password: form.value["password"] });
 
-    this.loginService.login(form.value["username"], form.value["password"]);
+    const success = await this.loginService.login(form.value["username"], form.value["password"])
+    
+    if(success)
+    {
+      const from: string = this.route.snapshot.queryParamMap.get("from") || "home";
+      this.router.navigateByUrl(from);
+    }
+    else
+    {
+      alert("Mot de passe ou nom d'utilisateur incorrect");
+    }    
 
     form.reset();
   }

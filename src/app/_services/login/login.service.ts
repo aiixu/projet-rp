@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
-import { Expose, plainToClass } from 'class-transformer';
+import { plainToClass } from 'class-transformer';
+import { UserModel } from 'src/app/_viewModels/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,22 +10,56 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   public async login(username: string, password: string): Promise<boolean> {
-    const response: any = await axios.post(`${environment.apiUrl}auth/login`,
+    try
     {
-      username: username,
-      password: password
-    });
-
-    //return plainToClass(DeleteRpResponseModel, response.data, { excludeExtraneousValues: true });
-    console.log(response);
-    return response.success;
+      const response: any = await axios.post(`${environment.apiUrl}auth/login`,
+      {
+        username: username,
+        password: password
+      });
+  
+      console.log(response.data);
+      if(response.data.success)
+      {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("token_expiration", response.data.expiration_date);
+        localStorage.setItem("user_data", JSON.stringify(response.data.user));
+  
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+    catch
+    {
+      return false;
+    }
   }
 
   logout(): void { 
+    const username: string | undefined = this.getLoggedUser()?.username;
+    if(username == undefined) { return; }
+
     localStorage.clear();
+    console.log("a");
+    
+    axios.post(`${environment.apiUrl}auth/logout`,
+      {
+        username: username
+      })
+      .then(res =>
+      {
+        
+        const currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
+      });
   }
 
   isLoggedIn(): boolean { 
@@ -31,7 +67,7 @@ export class LoginService {
     return localStorage.getItem("token") != null;
   }
 
-  getLoggedUser(): User | null { 
+  getLoggedUser(): UserModel | null { 
     if(!this.isLoggedIn()) { return null; }
 
     const userData: string | null = localStorage.getItem("user_data");
@@ -41,7 +77,7 @@ export class LoginService {
       return null;
     }
 
-    return plainToClass(User, userData);
+    return new UserModel(JSON.parse(userData));
   }
 
   checkExpiration(): void
@@ -54,12 +90,4 @@ export class LoginService {
       this.logout();
     }
   }
-}
-
-export class User {
-  @Expose() public id: number;
-  @Expose() public username: string;
-  @Expose() public email: boolean;
-  @Expose({ name: "is_public" }) public isPublic: boolean;
-  @Expose() public role: string;
 }

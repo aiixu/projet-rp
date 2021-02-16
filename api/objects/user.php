@@ -279,5 +279,67 @@
           
           return $stmt->rowCount();
         }
+
+        public function checkLogin()
+        {
+          $query = "SELECT
+                      `id`
+                    FROM
+                      `$this->table_name`
+                    WHERE
+                      `username` = '$this->username' AND
+                      `password_hash` = '$this->password_hash'";
+
+          $stmt = $this->conn->prepare($query);
+          $stmt->execute();
+
+          if($stmt->rowCount() > 0)
+          {
+            // get retrieved row
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $this->id = $row["id"];
+            $this->getOne();
+
+            return true;
+          }
+
+          return false;
+        }
+
+        public function login($token, $expiration_date)
+        {
+          // query to insert user
+          $query = "INSERT 
+                    INTO
+                      `users_tokens`
+                    SET
+                      `id`         = '$this->id',
+                      `username`   = '$this->username',
+                      `token`      = '$token',
+                      `expiration` = '$expiration_date'";
+                       
+          // prepare query
+          $stmt = $this->conn->prepare($query);
+          
+          // execute query
+          return $stmt->execute();
+        }
+
+        public function logout()
+        {
+          // delete query
+          $query = "DELETE 
+                    FROM 
+                      `users_tokens` 
+                    WHERE 
+                      `username` = '$this->username'";
+
+          // prepare query
+          $stmt = $this->conn->prepare($query);
+
+          // execute query
+          return $stmt->execute();
+        }
     }
 ?>

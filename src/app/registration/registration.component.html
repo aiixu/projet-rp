@@ -15,43 +15,52 @@
                         <img class="is-rounded image is-124x124" src="assets/dragon_chinois.jpg" >
                     </div>
                     <div class="column right has-text-justified">
-                        <h1 class="title is-4 TextColor">Inscris-toi maintenant</h1>
-                        <p class="description">Plus que quelques champs à remplir avant de faire partie de l'aventure RP Projet !</p><br>
-                        <p class="description">Les champs indiqués par une * sont obligatoires.</p><br>
-                        <!-- Formulaire -->
-                        <form>
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-medium"  type="text" placeholder="Nom">
+                        <div *ngIf="!loginService.isLoggedIn()">
+                            <h1 class="title is-4 TextColor">Inscris-toi maintenant</h1>
+                            <p class="description">Plus que quelques champs à remplir avant de faire partie de l'aventure RP Projet !</p><br>
+                            <p class="description">Les champs indiqués par une * sont obligatoires.</p><br>
+                            <!-- Formulaire -->
+                            <form #signupForm="ngForm" (ngSubmit)="signup(signupForm)">
+                                <div class="field">
+                                    <div class="control">
+                                        <input ngModel name="lastName" class="input is-medium"  type="text" placeholder="Nom">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-medium" type="text" placeholder="Prénom">
+                                <div class="field">
+                                    <div class="control">
+                                        <input ngModel name="firstName" class="input is-medium" type="text" placeholder="Prénom">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-medium" type="text" placeholder="Pseudo*" required>
+                                <div class="field">
+                                    <div class="control">
+                                        <input ngModel name="username" class="input is-medium" type="text" placeholder="Pseudo*" required>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-medium" type="password" placeholder="Mot de passe*" minlength="5" maxlength="15" required>
+                                <div class="field">
+                                    <div class="control">
+                                        <input ngModel name="passwordHash" class="input is-medium" type="password" placeholder="Mot de passe*" minlength="5" maxlength="15" required>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="field">
-                                <div class="control">
-                                    <input class="input is-medium" type="email" placeholder="Email*" required>
+                                <div class="field">
+                                    <div class="control">
+                                        <input ngModel name="email" class="input is-medium" type="email" placeholder="Email*" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="button is-block is-primary is-fullwidth is-medium ButtonColor2">Envoyer</button>
-                            <br>
-                        </form>
+                                <button type="submit" class="button is-block is-primary is-fullwidth is-medium ButtonColor2">Envoyer</button>
+                                <br>
+                            </form>
+                        </div>
+                            
+                        <div *ngIf="loginService.isLoggedIn()">
+                            <p class="subtitle">
+                                Vous êtes déjà connecté
+                            </p>
+                            <button class="button is-danger" (click)="loginService.logout()">Se déconnecter</button>
+                        </div>
                     </div>
                 </div>
             </div>

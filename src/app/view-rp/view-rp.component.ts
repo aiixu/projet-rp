@@ -5,6 +5,7 @@ import { GetRpRequest, GetRpRequestModel, GetRpResponseModel } from 'src/apiwrap
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { DeleteRpRequest, DeleteRpRequestModel } from 'src/apiwrapper/rp/deleteRpRequest';
+import { LoginService } from '../_services/login/login.service';
 
 @Component({
   selector: 'app-view-rp',
@@ -16,7 +17,17 @@ export class ViewRpComponent implements OnInit {
   response : GetRpResponseModel;
   id: number;
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, public loginService: LoginService) { 
+    if(!loginService.isLoggedIn())
+    {
+      router.navigate([ "/connexion" ], 
+      {
+        state: {
+          from: "home"
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get("id"));

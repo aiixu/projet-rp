@@ -1,4 +1,7 @@
 <!--Nos RPs -->
+
+
+
 <div class="container">
   <section class="section is-medium">
     <div class="box ButtonColor2">
@@ -233,3 +236,9 @@
 
 </div>
 
+<input [formControl]="file" 
+ (change)="fileChange($event)" 
+ type="file" placeholder="File">
+ <button style="margin-top:20px" (click)="uploadFile()" >
+      Upload
+</button>

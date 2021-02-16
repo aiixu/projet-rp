@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseUserModel } from 'src/apiwrapper/users/getUsersRequest';
+import { LoginService } from '../_services/login/login.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -11,7 +12,17 @@ import { GetUsersRequest, GetUsersRequestModel, GetUsersResponseUserModel } from
 export class ViewProfileComponent implements OnInit {
   user: GetUsersResponseUserModel;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private loginService: LoginService, private router: Router) { 
+    if(!loginService.isLoggedIn())
+    {
+      router.navigate([ "/connexion" ], 
+      {
+        state: {
+          from: "home"
+        }
+      });
+    }
+  }
 
   ngOnInit(): void {
     const username = this.route.snapshot.paramMap.get("username");
